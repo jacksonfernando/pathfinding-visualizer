@@ -1,41 +1,32 @@
+'use client';
+
 import { useState } from 'react';
 import navbarStyle from './navbar.module.css'
 import Link from 'next/link';
 import { HiMagnifyingGlass, HiOutlineMoon, HiOutlineBars3 } from "react-icons/hi2";
-import { latoFont } from '../../pages/_app'
+import { latoFont } from '../../config/fonts'
 import { IoCloseOutline } from "react-icons/io5";
-import { useRouter } from 'next/router';
 import { NAVBAR_TITLE } from '../../constants/global';
 
 
 const Navbar = () => {
   const [dropdownMenu, setDropdownMenu] = useState(false);
-  const router = useRouter();
 
   const renderMenu = (containerStyle, listStyle) => {
-    const aboutClassName = router.pathname == '/'
-      ? navbarStyle.activeMenu : undefined;
-    const projectClassName = router.pathname == '/projects'
-      ? navbarStyle.activeMenu : undefined;
-    const blogsClassName = router.pathname == '/blogs'
-      ? navbarStyle.activeMenu : undefined;
-    const linksClassName = router.pathname == '/links'
-      ? navbarStyle.activeMenu : undefined;
-
     return (
       <div className={containerStyle}>
         <ul className={listStyle}>
           <li>
-            <Link href='/' className={aboutClassName}>About</Link>
+            <Link href='/'>About</Link>
           </li>
           <li>
-            <Link href='/projects' className={projectClassName}>Projects</Link>
+            <Link href='/projects'>Projects</Link>
           </li>
           <li>
-            <Link href={'/blogs'} className={blogsClassName}>Blogs</Link>
+            <Link href={'/blogs'}>Blogs</Link>
           </li>
           <li>
-            <Link href={'/links'} className={linksClassName}>Links</Link>
+            <Link href={'/links'}>Links</Link>
           </li>
         </ul>
       </div >

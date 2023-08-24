@@ -17,16 +17,16 @@ const Navbar = () => {
       <div className={containerStyle}>
         <ul className={listStyle}>
           <li>
-            <Link href='/'>About</Link>
+            <Link href='/'>Algorithms</Link>
           </li>
           <li>
-            <Link href='/projects'>Projects</Link>
+            <Link href='/projects'>Start</Link>
           </li>
           <li>
-            <Link href={'/blogs'}>Blogs</Link>
+            <Link href={'/blogs'}>Clear Maze</Link>
           </li>
           <li>
-            <Link href={'/links'}>Links</Link>
+            <Link href={'/links'}>Starting Position</Link>
           </li>
         </ul>
       </div >

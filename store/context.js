@@ -1,4 +1,4 @@
-import { useContext, createContext, useState } from "react";
+import { useContext, createContext, useState, useEffect } from "react";
 
 const context = createContext();
 
@@ -30,11 +30,41 @@ const getGrid = (width, height) => {
 export const ParamsProvider = ({ children }) => {
   const [mode, setMode] = useState(null)
   const [algo, setAlgo] = useState('')
-  const [run, setRun] = usetState(false)
-  const [grid, setGrid] = usetState(getGrid(50, 25))
+  const [run, setRun] = useState(false)
+  const [grid, setGrid] = useState(getGrid(50, 25))
+  const [editing, setEditFlag] = useState(false)
+  const [res, setRes] = useState(false)
+  const start = useRef({ x: 25, y: 12 })
+  const end = useRef({ x: 48, y: 23 })
+
+  useEffect(() => {
+    restart()
+  }, [res]);
+
+  function restart() {
+    setGrid(getGrid(50, 25));
+  }
+
   return (
     <div>
-
+      <context.Provider value={{
+        mode,
+        setMode,
+        algo,
+        setAlgo,
+        run,
+        setRun,
+        grid,
+        setGrid,
+        editing,
+        setEditFlag,
+        res,
+        setRes,
+        start,
+        end,
+      }}>
+        {children}
+      </context.Provider>
     </div>
   )
 }

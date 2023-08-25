@@ -1,4 +1,12 @@
-import { useContext, createContext, useState, useEffect } from "react";
+'use client';
+
+import {
+  useContext,
+  createContext,
+  useState,
+  useEffect,
+  useRef
+} from "react";
 
 const context = createContext();
 
@@ -23,7 +31,7 @@ const getGrid = (width, height) => {
     grid.push(local)
   }
   grid[Math.floor(height / 2)][Math.floor(width / 2)].isStart = true
-  gird[height - 2][width - 2].isTarget = true
+  grid[height - 2][width - 2].isTarget = true
   return grid;
 }
 

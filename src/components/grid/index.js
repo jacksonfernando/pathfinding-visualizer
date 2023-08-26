@@ -2,6 +2,8 @@
 
 import { useRef, useState } from "react";
 import { useParams } from "../../../store/context";
+import { CiVirus } from 'react-icons/ci'
+import gridStyle from './grid.module.css'
 
 const Grid = () => {
   const {
@@ -22,32 +24,31 @@ const Grid = () => {
   function getRefArray(grid) {
     let array = []
     grid.forEach(elem => {
-      elem.forEach(child => {
+      elem.forEach((child) => {
         array.push(useRef())
       });
     });
     return array
   }
 
-  return refArray.map((elem, index) => {
-    console.log('ELEM', elem)
-    let classList = ['cell']
-    let yindex = Math.floor(index / 50)
-    let xindex = index % 50
-    let cell = grid[yindex][xindex]
-    if (cell.iswall) {
-      classList.push('wall')
-    }
-    return (
-      <>
-        <div key={`${index}`} ref={elem} className={classList.join('')} >
-          {cell.weight > 1 ? <i className="bi bi-virus"></i> : null}
-          {cell.isstart ? <i className="bi bi-geo-alt"></i> : null}
-          {cell.istarget ? <i className="bi bi-geo"></i> : null}
-        </div>
-      </>
-    )
-  })
+  return (
+    <div className={gridStyle.container}>
+      {refArray.map((elem, index) => {
+        let classList = ['cell']
+        let yindex = Math.floor(index / 50)
+        let xindex = index % 50
+        let cell = grid[yindex][xindex]
+        if (cell.iswall) {
+          classList.push('wall')
+        }
+        return (
+          <div key={`${index}`} ref={elem} className={gridStyle.cell} >
+            tolol
+          </div>
+        )
+      })}
+    </div>
+  )
 }
 
 

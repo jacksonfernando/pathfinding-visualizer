@@ -5,4 +5,6 @@
 }
 .cell{
     border: 1px solid white;
+    min-height: 2rem;
+    min-width: 2rem;
 }

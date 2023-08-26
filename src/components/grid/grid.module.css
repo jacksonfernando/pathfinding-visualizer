@@ -3,11 +3,12 @@
     grid-template-columns: repeat(20, 1fr);
     flex-direction: row;
     flex-wrap: wrap;
-    padding: 2rem 2rem;
+    padding: 2rem 20rem;
 }
 .cell{
     border: 1px solid rgb(199, 194, 194);
     min-height: 2rem;
     min-width: 2rem;
-    padding: 0.3rem 0.3rem;
+    padding: 0.2rem 0;
+    text-align: center;
 }

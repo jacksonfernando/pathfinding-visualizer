@@ -39,7 +39,7 @@ export const ParamsProvider = ({ children }) => {
   const [mode, setMode] = useState(null)
   const [algo, setAlgo] = useState('')
   const [run, setRun] = useState(false)
-  const [grid, setGrid] = useState(getGrid(50, 25))
+  const [grid, setGrid] = useState(getGrid(20, 20))
   const [editing, setEditFlag] = useState(false)
   const [res, setRes] = useState(false)
   const start = useRef({ x: 12, y: 25 })
@@ -50,7 +50,7 @@ export const ParamsProvider = ({ children }) => {
   }, [res]);
 
   function restart() {
-    setGrid(getGrid(50, 25));
+    setGrid(getGrid(20, 20));
   }
 
   return (

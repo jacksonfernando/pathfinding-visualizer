@@ -2,7 +2,7 @@
 
 import { useRef, useState } from "react";
 import { useParams } from "../../../store/context";
-import { CiVirus } from 'react-icons/ci'
+import { CiVirus, CiFlag1, CiLocationOn } from 'react-icons/ci'
 import gridStyle from './grid.module.css'
 
 const Grid = () => {
@@ -44,9 +44,9 @@ const Grid = () => {
 
         return (
           <div key={`${index}`} ref={elem} className={gridStyle.cell} >
-            {cell.weight > 1 ? <CiVirus size={20} color="white" /> : null}
-            {cell.isStart ? <CiVirus size={20} color="white" /> : null}
-            {cell.isTarget ? <CiVirus size={20} color="white" /> : null}
+            {cell.weight > 1 ? <CiVirus size={20} color="pink" /> : null}
+            {cell.isStart ? <CiLocationOn size={20} color="pink" /> : null}
+            {cell.isTarget ? <CiFlag1 size={20} color="pink" /> : null}
           </div>
         )
       })}

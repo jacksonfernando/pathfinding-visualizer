@@ -8,7 +8,6 @@ export default function Home() {
     <>
       <ParamsProvider>
         <Navbar />
-        tolol
         <Grid />
       </ParamsProvider>
     </>

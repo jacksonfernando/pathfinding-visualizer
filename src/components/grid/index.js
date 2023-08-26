@@ -35,15 +35,18 @@ const Grid = () => {
     <div className={gridStyle.container}>
       {refArray.map((elem, index) => {
         let classList = ['cell']
-        let yindex = Math.floor(index / 50)
-        let xindex = index % 50
-        let cell = grid[yindex][xindex]
-        if (cell.iswall) {
+        let xIndex = Math.floor(index / 50)
+        let yIndex = index % 50
+        let cell = grid[xIndex][yIndex]
+        if (cell.isWall) {
           classList.push('wall')
         }
+
         return (
           <div key={`${index}`} ref={elem} className={gridStyle.cell} >
-            tolol
+            {cell.weight > 1 ? <CiVirus size={20} color="white" /> : null}
+            {cell.isStart ? <CiVirus size={20} color="white" /> : null}
+            {cell.isTarget ? <CiVirus size={20} color="white" /> : null}
           </div>
         )
       })}

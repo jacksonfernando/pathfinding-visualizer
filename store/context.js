@@ -20,8 +20,8 @@ const getGrid = (width, height) => {
     let local = []
     for (let j = 0; j < width; j++) {
       local.push({
-        x: j,
-        y: i,
+        x: i,
+        y: j,
         isStart: false,
         isTarget: false,
         weight: 1,
@@ -42,8 +42,8 @@ export const ParamsProvider = ({ children }) => {
   const [grid, setGrid] = useState(getGrid(50, 25))
   const [editing, setEditFlag] = useState(false)
   const [res, setRes] = useState(false)
-  const start = useRef({ x: 25, y: 12 })
-  const end = useRef({ x: 48, y: 23 })
+  const start = useRef({ x: 12, y: 25 })
+  const end = useRef({ x: 23, y: 48 })
 
   useEffect(() => {
     restart()

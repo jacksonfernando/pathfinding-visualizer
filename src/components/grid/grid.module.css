@@ -6,7 +6,7 @@
     padding: 2rem 20rem;
 }
 .cell{
-    border: 1px solid lightpink;
+    border: 1px solid grey;
     min-height: 2rem;
     min-width: 2rem;
     padding: 0.2rem 0;

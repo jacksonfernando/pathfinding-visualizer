@@ -56,6 +56,42 @@ const Grid = () => {
     return null
   }
 
+
+  useEffect(() => {
+
+    if (algo == 'BFS') {
+      let hashmap = {}
+      let prevmap = {}
+      for (let j = 0; j < 20; j++) {
+        for (let i = 0; i < 20; i++) {
+          hashmap[`${i}-${j}`] = false
+          prevmap[`${i}-${j}`] = null
+        }
+      }
+      let result = BFS(grid, hashmap, prevmap, start.current, end.current)
+      let path = []
+      if (result != null) {
+        let current = result[0]
+        while (prevmap[`${current.x}-${current.y}`] != null) {
+          path.push(current)
+          current = prevmap[`${current.x}-${current.y}`]
+        }
+        setTimeout(() => {
+          path.reverse().forEach((elem, index) => {
+            refArray[elem.x + elem.y * 20].current.style['transition-delay'] = `${(index) * 15}ms`
+            refArray[elem.x + elem.y * 20].current.classList.add('path')
+          })
+        }, result[1] * 9)
+
+      }
+    }
+  }, [run])
+
+  useEffect(() => {
+    refArray.forEach((elem) => { elem.current.style['transition-delay'] = '0ms' })
+    refArray.forEach((elem) => { elem.current.classList.remove('visited'); elem.current.classList.remove('path') })
+  }, [res])
+
   function getRefArray(grid) {
     let array = []
     grid.forEach(elem => {

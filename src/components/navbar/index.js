@@ -7,20 +7,27 @@ import { HiMagnifyingGlass, HiOutlineMoon, HiOutlineBars3 } from "react-icons/hi
 import { latoFont } from '../../../config/fonts'
 import { IoCloseOutline } from "react-icons/io5";
 import { NAVBAR_TITLE } from '../../../constants/global';
+import { useParams } from '../../../store/context';
 
 
 const Navbar = () => {
   const [dropdownMenu, setDropdownMenu] = useState(false);
+  const { setAlgo, setRun } = useParams();
+
+  const onRunSimulation = () => {
+    setAlgo('BFS');
+    setRun(true);
+  }
 
   const renderMenu = (containerStyle, listStyle) => {
     return (
       <div className={containerStyle}>
         <ul className={listStyle}>
           <li>
-            <Link href='/'>Algorithms</Link>
+            <i>Algorithms</i>
           </li>
           <li>
-            <Link href='/projects'>Start</Link>
+            <i onClick={onRunSimulation}>Start</i>
           </li>
           <li>
             <Link href={'/blogs'}>Clear Maze</Link>

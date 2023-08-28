@@ -39,18 +39,18 @@ export const ParamsProvider = ({ children }) => {
   const [mode, setMode] = useState(null)
   const [algo, setAlgo] = useState('')
   const [run, setRun] = useState(false)
-  const [grid, setGrid] = useState(getGrid(20, 20))
+  const [grid, setGrid] = useState(getGrid(5, 5))
   const [editing, setEditFlag] = useState(false)
   const [res, setRes] = useState(false)
-  const start = useRef({ x: 12, y: 25 })
-  const end = useRef({ x: 23, y: 48 })
+  const start = useRef({ x: 0, y: 0 })
+  const end = useRef({ x: 5, y: 5 })
 
   useEffect(() => {
     restart()
   }, [res]);
 
   function restart() {
-    setGrid(getGrid(20, 20));
+    setGrid(getGrid(5, 5));
   }
 
   return (

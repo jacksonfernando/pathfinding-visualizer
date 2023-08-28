@@ -20,6 +20,7 @@ const Grid = () => {
   } = useParams()
 
   const [refArray, mm] = useState(getRefArray(grid))
+  console.log(refArray)
 
   function BFS(graph, hashmap, prevmap, start, target) {
     let queue = [start]
@@ -106,8 +107,8 @@ const Grid = () => {
     <div className={gridStyle.container}>
       {refArray.map((elem, index) => {
         let classList = ['cell']
-        let xIndex = Math.floor(index / 20)
-        let yIndex = index % 20
+        let xIndex = Math.floor(index / 5)
+        let yIndex = index % 5
         let cell = grid[xIndex][yIndex]
         if (cell.isWall) {
           classList.push('wall')

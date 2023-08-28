@@ -29,11 +29,11 @@ const Grid = () => {
     while (queue.length > 0) {
       count += 1
       let c = queue.pop()
-      refArray[c.x + c.y * 20].current.style['transition-delay'] = `${count * 8}ms`
-      refArray[c.x + c.y * 20].current.classList.add('visited')
+      refArray[c.x + c.y * 5].current.style['transition-delay'] = `${count * 8}ms`
+      refArray[c.x + c.y * 5].current.classList.add('visited')
       if (c.x == target.x && c.y == target.y) return [c, count]
 
-      if (c.x + 1 < 20 && !hashmap[`${c.x + 1}-${c.y}`] && !graph[c.y][c.x + 1].iswall) {
+      if (c.x + 1 < 5 && !hashmap[`${c.x + 1}-${c.y}`] && !graph[c.y][c.x + 1].iswall) {
         queue.unshift({ x: c.x + 1, y: c.y })
         prevmap[`${c.x + 1}-${c.y}`] = { ...c }
         hashmap[`${c.x + 1}-${c.y}`] = true
@@ -59,12 +59,11 @@ const Grid = () => {
 
 
   useEffect(() => {
-
     if (algo == 'BFS') {
       let hashmap = {}
       let prevmap = {}
-      for (let j = 0; j < 20; j++) {
-        for (let i = 0; i < 20; i++) {
+      for (let j = 0; j < 5; j++) {
+        for (let i = 0; i < 5; i++) {
           hashmap[`${i}-${j}`] = false
           prevmap[`${i}-${j}`] = null
         }

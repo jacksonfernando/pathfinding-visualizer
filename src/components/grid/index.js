@@ -20,7 +20,6 @@ const Grid = () => {
   } = useParams()
 
   const [refArray, mm] = useState(getRefArray(grid))
-  console.log(refArray)
 
   function BFS(graph, hashmap, prevmap, start, target) {
     let queue = [start]

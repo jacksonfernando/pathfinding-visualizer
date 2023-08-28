@@ -12,3 +12,9 @@
     padding: 0.2rem 0;
     text-align: center;
 }
+
+.cell > visited {
+  background-color: blue;
+}
+
+

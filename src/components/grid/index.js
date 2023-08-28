@@ -43,7 +43,7 @@ const Grid = () => {
         prevmap[`${c.x - 1}-${c.y}`] = { ...c }
         hashmap[`${c.x - 1}-${c.y}`] = true
       }
-      if (c.y + 1 < 20 && !hashmap[`${c.x}-${c.y + 1}`] && !graph[c.y + 1][c.x].iswall) {
+      if (c.y + 1 < 5 && !hashmap[`${c.x}-${c.y + 1}`] && !graph[c.y + 1][c.x].iswall) {
         queue.unshift({ x: c.x, y: c.y + 1 })
         prevmap[`${c.x}-${c.y + 1}`] = { ...c }
         hashmap[`${c.x}-${c.y + 1}`] = true
@@ -78,8 +78,8 @@ const Grid = () => {
         }
         setTimeout(() => {
           path.reverse().forEach((elem, index) => {
-            refArray[elem.x + elem.y * 20].current.style['transition-delay'] = `${(index) * 15}ms`
-            refArray[elem.x + elem.y * 20].current.classList.add('path')
+            refArray[elem.x + elem.y * 5].current.style['transition-delay'] = `${(index) * 15}ms`
+            refArray[elem.x + elem.y * 5].current.classList.add('path')
           })
         }, result[1] * 9)
 

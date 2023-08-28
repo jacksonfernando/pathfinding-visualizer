@@ -31,7 +31,7 @@ const getGrid = (width, height) => {
     grid.push(local)
   }
   grid[Math.floor(height / 2)][Math.floor(width / 2)].isStart = true
-  grid[height - 2][width - 2].isTarget = true
+  grid[height - 1][width - 1].isTarget = true
   return grid;
 }
 
@@ -42,7 +42,7 @@ export const ParamsProvider = ({ children }) => {
   const [grid, setGrid] = useState(getGrid(5, 5))
   const [editing, setEditFlag] = useState(false)
   const [res, setRes] = useState(false)
-  const start = useRef({ x: 0, y: 0 })
+  const start = useRef({ x: 0, y: 1 })
   const end = useRef({ x: 5, y: 5 })
 
   useEffect(() => {

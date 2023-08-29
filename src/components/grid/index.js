@@ -29,7 +29,7 @@ const Grid = () => {
       count += 1
       let c = queue.pop()
       refArray[c.x + c.y * 5].current.style['transition-delay'] = `${count * 8}ms`
-      refArray[c.x + c.y * 5].current.className = 'visited'
+      refArray[c.x + c.y * 5].current.value = true
       if (c.x == target.x && c.y == target.y) return [c, count]
 
       if (c.x + 1 < 5 && !hashmap[`${c.x + 1}-${c.y}`] && !graph[c.y][c.x + 1].iswall) {
@@ -88,14 +88,18 @@ const Grid = () => {
 
   useEffect(() => {
     refArray.forEach((elem) => { elem.current.style['transition-delay'] = '0ms' })
-    refArray.forEach((elem) => { elem.current.classList.remove('visited'); elem.current.classList.remove('path') })
+    // refArray.forEach((elem) => {
+    //   elem.current.value = { visited: false };
+    //   elem.current.classList.remove('path')
+    // }
+    // )
   }, [res])
 
   function getRefArray(grid) {
     let array = []
     grid.forEach(elem => {
       elem.forEach((child) => {
-        array.push(useRef())
+        array.push(useRef(false))
       });
     });
     return array
@@ -104,18 +108,14 @@ const Grid = () => {
   return (
     <div className={gridStyle.container}>
       {refArray.map((elem, index) => {
-        let classList = ['cell']
         let xIndex = Math.floor(index / 5)
         let yIndex = index % 5
         let cell = grid[xIndex][yIndex]
-        if (cell.isWall) {
-          classList.push('wall')
-        }
 
-        console.log(elem.current);
+        const style = elem?.current?.value ? 'cell' : 'visited'
 
         return (
-          <div key={`${index}`} ref={elem} className={gridStyle[classList.join('')]} >
+          <div key={`${index}`} ref={elem} className={gridStyle[style]} >
             {cell.weight > 1 ? <CiVirus size={20} color="pink" /> : null}
             {cell.isStart ? <CiLocationOn size={20} color="pink" /> : null}
             {cell.isTarget ? <CiFlag1 size={20} color="green" /> : null}

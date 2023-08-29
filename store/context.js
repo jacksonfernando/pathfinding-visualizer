@@ -31,7 +31,7 @@ const getGrid = (width, height) => {
     grid.push(local)
   }
   grid[Math.floor(height / 2)][Math.floor(width / 2)].isStart = true
-  grid[height - 1][width - 1].isTarget = true
+  grid[1][1].isTarget = true
   return grid;
 }
 

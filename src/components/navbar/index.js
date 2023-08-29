@@ -27,13 +27,13 @@ const Navbar = () => {
             <i>Algorithms</i>
           </li>
           <li>
-            <i onClick={() => onRunSimulation()}>Start</i>
+            <i onClick={onRunSimulation}>Start</i>
           </li>
           <li>
-            <Link href={'/blogs'}>Clear Maze</Link>
+            <Link href={'#'}>Clear Maze</Link>
           </li>
           <li>
-            <Link href={'/links'}>Starting Position</Link>
+            <Link href={'#'}>Starting Position</Link>
           </li>
         </ul>
       </div >

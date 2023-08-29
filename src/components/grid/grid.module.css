@@ -13,8 +13,12 @@
     text-align: center;
 }
 
-.cell > visited {
-  background-color: blue;
+.visited {
+  border: 1px solid grey;
+  min-height: 2rem;
+  min-width: 2rem;
+  padding: 0.2rem 0;
+  text-align: center;
 }
 
 

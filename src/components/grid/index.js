@@ -29,7 +29,7 @@ const Grid = () => {
       count += 1
       let c = queue.pop()
       refArray[c.x + c.y * 5].current.style['transition-delay'] = `${count * 8}ms`
-      refArray[c.x + c.y * 5].current.classList.add('visited')
+      refArray[c.x + c.y * 5].current.className = 'visited'
       if (c.x == target.x && c.y == target.y) return [c, count]
 
       if (c.x + 1 < 5 && !hashmap[`${c.x + 1}-${c.y}`] && !graph[c.y][c.x + 1].iswall) {
@@ -111,6 +111,8 @@ const Grid = () => {
         if (cell.isWall) {
           classList.push('wall')
         }
+
+        console.log(elem.current);
 
         return (
           <div key={`${index}`} ref={elem} className={gridStyle[classList.join('')]} >

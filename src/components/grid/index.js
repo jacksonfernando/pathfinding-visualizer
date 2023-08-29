@@ -108,7 +108,7 @@ const Grid = () => {
         let yIndex = index % 5
         let cell = grid[xIndex][yIndex]
 
-        const style = elem.current ? 'cell' : 'visited'
+        const style = !elem.current ? 'cell' : 'visited'
 
         return (
           <div key={`${index}`} ref={elem} className={gridStyle[style]} >

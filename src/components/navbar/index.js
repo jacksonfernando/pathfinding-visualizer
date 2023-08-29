@@ -12,11 +12,11 @@ import { useParams } from '../../../store/context';
 
 const Navbar = () => {
   const [dropdownMenu, setDropdownMenu] = useState(false);
-  const { setAlgo, setRun } = useParams();
+  const { setAlgo, setRun, run } = useParams();
 
   const onRunSimulation = () => {
     setAlgo('BFS');
-    setRun(true);
+    setRun(!run);
   }
 
   const renderMenu = (containerStyle, listStyle) => {
@@ -27,7 +27,7 @@ const Navbar = () => {
             <i>Algorithms</i>
           </li>
           <li>
-            <i onClick={onRunSimulation}>Start</i>
+            <i onClick={() => onRunSimulation()}>Start</i>
           </li>
           <li>
             <Link href={'/blogs'}>Clear Maze</Link>

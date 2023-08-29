@@ -28,8 +28,7 @@ const Grid = () => {
     while (queue.length > 0) {
       count += 1
       let c = queue.pop()
-      refArray[c.x + c.y * 5].current.style['transition-delay'] = `${count * 8}ms`
-      refArray[c.x + c.y * 5].current.value = true
+      refArray[c.x + c.y * 5].current = true
       if (c.x == target.x && c.y == target.y) return [c, count]
 
       if (c.x + 1 < 5 && !hashmap[`${c.x + 1}-${c.y}`] && !graph[c.y][c.x + 1].iswall) {
@@ -77,7 +76,6 @@ const Grid = () => {
         }
         setTimeout(() => {
           path.reverse().forEach((elem, index) => {
-            refArray[elem.x + elem.y * 5].current.style['transition-delay'] = `${(index) * 15}ms`
             refArray[elem.x + elem.y * 5].current.classList.add('path')
           })
         }, result[1] * 9)
@@ -87,12 +85,10 @@ const Grid = () => {
   }, [run])
 
   useEffect(() => {
-    refArray.forEach((elem) => { elem.current.style['transition-delay'] = '0ms' })
-    // refArray.forEach((elem) => {
-    //   elem.current.value = { visited: false };
-    //   elem.current.classList.remove('path')
-    // }
-    // )
+    refArray.forEach((elem) => {
+      elem.current = false;
+    }
+    )
   }, [res])
 
   function getRefArray(grid) {
@@ -112,7 +108,7 @@ const Grid = () => {
         let yIndex = index % 5
         let cell = grid[xIndex][yIndex]
 
-        const style = elem?.current?.value ? 'cell' : 'visited'
+        const style = elem.current ? 'cell' : 'visited'
 
         return (
           <div key={`${index}`} ref={elem} className={gridStyle[style]} >

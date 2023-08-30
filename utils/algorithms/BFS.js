@@ -1,4 +1,4 @@
-const BFS = (graph, hashmap, prevmap, start, target) => {
+const BFS = (refArray, graph, hashmap, prevmap, start, target) => {
   let queue = [start]
   let count = 0
   hashmap[`${start.x}-${start.y}`] = true

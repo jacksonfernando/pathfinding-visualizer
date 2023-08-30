@@ -20,7 +20,7 @@ const Grid = () => {
     algo
   } = useParams()
 
-  const [refArray, mm] = useState(getRefArray(grid))
+  const [refArray, _] = useState(getRefArray(grid))
 
   useEffect(() => {
     if (algo == 'BFS') {
@@ -32,7 +32,7 @@ const Grid = () => {
           prevmap[`${i}-${j}`] = null
         }
       }
-      let result = BFS(grid, hashmap, prevmap, start.current, end.current)
+      let result = BFS(refArray, grid, hashmap, prevmap, start.current, end.current)
       let path = []
       if (result) {
         let current = result[0]

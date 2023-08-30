@@ -30,7 +30,6 @@ const Grid = () => {
       let c = queue.pop()
       refArray[c.x + c.y * 5].current = true
       if (c.x == target.x && c.y == target.y) return [c, count]
-
       if (c.x + 1 < 5 && !hashmap[`${c.x + 1}-${c.y}`] && !graph[c.y][c.x + 1].iswall) {
         queue.unshift({ x: c.x + 1, y: c.y })
         prevmap[`${c.x + 1}-${c.y}`] = { ...c }
@@ -52,7 +51,6 @@ const Grid = () => {
         hashmap[`${c.x}-${c.y - 1}`] = true
       }
     }
-    return null
   }
 
 

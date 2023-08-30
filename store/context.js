@@ -42,8 +42,8 @@ export const ParamsProvider = ({ children }) => {
   const [grid, setGrid] = useState(getGrid(5, 5))
   const [editing, setEditFlag] = useState(false)
   const [res, setRes] = useState(false)
-  const start = useRef({ x: 0, y: 1 })
-  const end = useRef({ x: 5, y: 5 })
+  const start = useRef({ x: 2, y: 2 })
+  const end = useRef({ x: 1, y: 1 })
 
   useEffect(() => {
     restart()

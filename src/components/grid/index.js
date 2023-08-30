@@ -59,7 +59,7 @@ const Grid = () => {
   function getRefArray(grid) {
     let array = []
     grid.forEach(elem => {
-      elem.forEach((child) => {
+      elem.forEach((_) => {
         array.push(useRef(false))
       });
     });

@@ -14,7 +14,7 @@ export const useParams = () => {
   return useContext(context)
 };
 
-const getGrid = (width, height) => {
+const generateGrid = (width, height) => {
   let grid = []
   for (let i = 0; i < height; i++) {
     let local = []
@@ -39,7 +39,7 @@ export const ParamsProvider = ({ children }) => {
   const [mode, setMode] = useState(null)
   const [algo, setAlgo] = useState('')
   const [run, setRun] = useState(false)
-  const [grid, setGrid] = useState(getGrid(5, 5))
+  const [grid, setGrid] = useState(generateGrid(5, 5))
   const [editing, setEditFlag] = useState(false)
   const [res, setRes] = useState(false)
   const start = useRef({ x: 2, y: 2 })
@@ -50,7 +50,7 @@ export const ParamsProvider = ({ children }) => {
   }, [res]);
 
   function restart() {
-    setGrid(getGrid(5, 5));
+    setGrid(generateGrid(5, 5));
   }
 
   return (

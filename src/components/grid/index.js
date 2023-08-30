@@ -4,6 +4,7 @@ import { useRef, useState, useEffect } from "react";
 import { useParams } from "../../../store/context";
 import { CiVirus, CiFlag1, CiLocationOn } from 'react-icons/ci'
 import gridStyle from './grid.module.css'
+import { BFS } from "../../../utils/algorithms/BFS";
 
 const Grid = () => {
   const {
@@ -21,39 +22,6 @@ const Grid = () => {
 
   const [refArray, mm] = useState(getRefArray(grid))
 
-  function BFS(graph, hashmap, prevmap, start, target) {
-    let queue = [start]
-    let count = 0
-    hashmap[`${start.x}-${start.y}`] = true
-    while (queue.length > 0) {
-      count += 1
-      let c = queue.pop()
-      refArray[c.x + c.y * 5].current = true
-      if (c.x == target.x && c.y == target.y) return [c, count]
-      if (c.x + 1 < 5 && !hashmap[`${c.x + 1}-${c.y}`] && !graph[c.y][c.x + 1].iswall) {
-        queue.unshift({ x: c.x + 1, y: c.y })
-        prevmap[`${c.x + 1}-${c.y}`] = { ...c }
-        hashmap[`${c.x + 1}-${c.y}`] = true
-      }
-      if (c.x - 1 >= 0 && !hashmap[`${c.x - 1}-${c.y}`] && !graph[c.y][c.x - 1].iswall) {
-        queue.unshift({ x: c.x - 1, y: c.y })
-        prevmap[`${c.x - 1}-${c.y}`] = { ...c }
-        hashmap[`${c.x - 1}-${c.y}`] = true
-      }
-      if (c.y + 1 < 5 && !hashmap[`${c.x}-${c.y + 1}`] && !graph[c.y + 1][c.x].iswall) {
-        queue.unshift({ x: c.x, y: c.y + 1 })
-        prevmap[`${c.x}-${c.y + 1}`] = { ...c }
-        hashmap[`${c.x}-${c.y + 1}`] = true
-      }
-      if (c.y - 1 >= 0 && !hashmap[`${c.x}-${c.y - 1}`] && !graph[c.y - 1][c.x].iswall) {
-        queue.unshift({ x: c.x, y: c.y - 1 })
-        prevmap[`${c.x}-${c.y - 1}`] = { ...c }
-        hashmap[`${c.x}-${c.y - 1}`] = true
-      }
-    }
-  }
-
-
   useEffect(() => {
     if (algo == 'BFS') {
       let hashmap = {}
@@ -66,7 +34,7 @@ const Grid = () => {
       }
       let result = BFS(grid, hashmap, prevmap, start.current, end.current)
       let path = []
-      if (result != null) {
+      if (result) {
         let current = result[0]
         while (prevmap[`${current.x}-${current.y}`] != null) {
           path.push(current)
@@ -77,7 +45,6 @@ const Grid = () => {
             refArray[elem.x + elem.y * 5].current.classList.add('path')
           })
         }, result[1] * 9)
-
       }
     }
   }, [run])

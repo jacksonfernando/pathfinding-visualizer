@@ -60,7 +60,7 @@ const Grid = () => {
     let array = []
     grid.forEach(elem => {
       elem.forEach((_) => {
-        array.push(useRef(false))
+        //array.push(useRef(false))
       });
     });
     return array

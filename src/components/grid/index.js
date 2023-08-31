@@ -16,17 +16,14 @@ const Grid = () => {
     algo
   } = useParams()
 
-  const getRefArray = (grid) => {
-    let array = []
-    for (let element of grid) {
-      for (let _ of element) {
-        array.push(useRef(false))
-      }
-    }
-    return array
-  }
+  const refArray = useRef([])
 
-  const [refArray, _] = useState(getRefArray(grid))
+  useEffect(() => {
+    const gridSize = grid.length * grid[0].length;
+    for (let i = 0; i < gridSize; i++) {
+      refArray.current.push({})
+    }
+  }, [grid]);
 
   useEffect(() => {
     if (algo == 'BFS') {
@@ -38,7 +35,7 @@ const Grid = () => {
           prevmap[`${i}-${j}`] = null
         }
       }
-      let result = BFS(refArray, grid, hashmap, prevmap, start.current, end.current)
+      let result = BFS(refArray.current, grid, hashmap, prevmap, start.current, end.current)
       let path = []
       if (result) {
         let current = result[0]
@@ -48,7 +45,7 @@ const Grid = () => {
         }
         setTimeout(() => {
           path.reverse().forEach((elem) => {
-            refArray[elem.x + elem.y * 5].current.classList.add('path')
+            refArray.current[elem.x + elem.y * 5].current.classList.add('path')
           })
         }, result[1] * 9)
       }
@@ -56,7 +53,7 @@ const Grid = () => {
   }, [run])
 
   useEffect(() => {
-    refArray.forEach((elem) => {
+    refArray.current.forEach((elem) => {
       elem.current = false;
     }
     )
@@ -65,7 +62,7 @@ const Grid = () => {
 
   return (
     <div className={gridStyle.container}>
-      {refArray.map((elem, index) => {
+      {refArray.current.map((elem, index) => {
         let xIndex = Math.floor(index / 5)
         let yIndex = index % 5
         let cell = grid[xIndex][yIndex]

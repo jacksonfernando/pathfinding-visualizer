@@ -20,6 +20,16 @@ const Grid = () => {
     algo
   } = useParams()
 
+  const getRefArray = (grid) => {
+    let array = []
+    for (let element of grid) {
+      for (let _ of element) {
+        array.push(useRef(false))
+      }
+    }
+    return array
+  }
+
   const [refArray, _] = useState(getRefArray(grid))
 
   useEffect(() => {
@@ -56,15 +66,6 @@ const Grid = () => {
     )
   }, [res])
 
-  function getRefArray(grid) {
-    let array = []
-    grid.forEach(elem => {
-      elem.forEach((_) => {
-        //array.push(useRef(false))
-      });
-    });
-    return array
-  }
 
   return (
     <div className={gridStyle.container}>

@@ -19,11 +19,17 @@ const Grid = () => {
   const refArray = useRef([])
 
   useEffect(() => {
+    refArray.current = [];
     const gridSize = grid.length * grid[0].length;
     for (let i = 0; i < gridSize; i++) {
-      refArray.current.push({})
+      refArray.current.push({ current: false })
     }
   }, [grid]);
+
+  useEffect(() => {
+    refArray.current.forEach((elem) => elem.current = false)
+  }, [res])
+
 
   useEffect(() => {
     if (algo == 'BFS') {
@@ -51,14 +57,6 @@ const Grid = () => {
       }
     }
   }, [run])
-
-  useEffect(() => {
-    refArray.current.forEach((elem) => {
-      elem.current = false;
-    }
-    )
-  }, [res])
-
 
   return (
     <div className={gridStyle.container}>

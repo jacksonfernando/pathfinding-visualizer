@@ -9,10 +9,6 @@ import { BFS } from "../../../utils/algorithms/BFS";
 const Grid = () => {
   const {
     grid,
-    setGrid,
-    editing,
-    setEditFlag,
-    mode,
     start,
     end,
     run,

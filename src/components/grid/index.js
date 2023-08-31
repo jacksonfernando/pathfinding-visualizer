@@ -43,11 +43,11 @@ const Grid = () => {
           path.push(current)
           current = prevmap[`${current.x}-${current.y}`]
         }
-        setTimeout(() => {
-          path.reverse().forEach((elem) => {
-            refArray.current[elem.x + elem.y * 5].current.classList.add('path')
-          })
-        }, result[1] * 9)
+        //setTimeout(() => {
+        //  path.reverse().forEach((elem) => {
+        //    refArray.current[elem.x + elem.y * 5].current.classList.add('path')
+        //  })
+        //}, result[1] * 9)
       }
     }
   }, [run])

@@ -16,6 +16,7 @@
 .path {
   border: 1px solid grey;
   background-color: yellow;
+  text-align: center;
 }
 
 .visited {

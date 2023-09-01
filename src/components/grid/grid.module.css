@@ -13,6 +13,11 @@
     text-align: center;
 }
 
+.path {
+  border: 1px solid grey;
+  background-color: yellow;
+}
+
 .visited {
   border: 1px solid grey;
   background-color: white;

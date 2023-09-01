@@ -24,16 +24,16 @@ const Navbar = () => {
       <div className={containerStyle}>
         <ul className={listStyle}>
           <li>
-            <i>Algorithms</i>
+            <p>Algorithms</p>
           </li>
           <li>
-            <i onClick={onRunSimulation}>Start</i>
+            <p onClick={() => onRunSimulation()}>Start</p>
           </li>
           <li>
-            <Link href={'#'}>Clear Maze</Link>
+            <p>Clear Maze</p>
           </li>
           <li>
-            <Link href={'#'}>Starting Position</Link>
+            <p>Starting Position</p>
           </li>
         </ul>
       </div >

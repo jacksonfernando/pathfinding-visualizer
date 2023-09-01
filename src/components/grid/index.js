@@ -27,7 +27,10 @@ const Grid = () => {
   }, [grid]);
 
   useEffect(() => {
-    refArray.current.forEach((elem) => elem.current = false)
+    refArray.current.forEach((elem) => {
+      elem.current = false
+      elem.path = false
+    })
   }, [res])
 
 

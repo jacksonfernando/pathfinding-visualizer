@@ -12,7 +12,7 @@ import { useParams } from '../../../store/context';
 
 const Navbar = () => {
   const [dropdownMenu, setDropdownMenu] = useState(false);
-  const { setAlgo, setRun, run } = useParams();
+  const { setAlgo, setRun, run, setRes, res } = useParams();
 
   const onRunSimulation = () => {
     setAlgo('BFS');
@@ -30,7 +30,7 @@ const Navbar = () => {
             <p onClick={() => onRunSimulation()}>Start</p>
           </li>
           <li>
-            <p>Clear Maze</p>
+            <p onClick={() => setRes(!res)}>Clear Maze</p>
           </li>
           <li>
             <p>Starting Position</p>

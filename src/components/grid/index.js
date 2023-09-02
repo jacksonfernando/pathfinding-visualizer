@@ -34,6 +34,21 @@ const Grid = () => {
   }, [res])
 
 
+  const createPath = (result, prevMap) => {
+    const COORDINATE = result[0];
+    const path = [];
+    if (COORDINATE) {
+      let currentCoordinate = COORDINATE;
+      while (prevMap[`${currentCoordinate.x}-${currentCoordinate.y}`]) {
+        path.push(currentCoordinate)
+        currentCoordinate = prevMap[`${currentCoordinate.x}-${currentCoordinate.y}`]
+      }
+    }
+    path.reverse().forEach((elem) => {
+      refArray.current[elem.x + elem.y * 5].path = true;
+    })
+  }
+
   useEffect(() => {
     if (algo == 'BFS') {
       let hashmap = {}
@@ -45,19 +60,7 @@ const Grid = () => {
         }
       }
       let result = BFS(refArray.current, grid, hashmap, prevmap, start.current, end.current)
-      let path = []
-      if (result) {
-        let current = result[0]
-        while (prevmap[`${current.x}-${current.y}`] != null) {
-          path.push(current)
-          current = prevmap[`${current.x}-${current.y}`]
-        }
-        setTimeout(() => {
-          path.reverse().forEach((elem) => {
-            refArray.current[elem.x + elem.y * 5].path = true;
-          })
-        }, result[1] * 9)
-      }
+      createPath(result, prevmap)
     }
   }, [run])
 

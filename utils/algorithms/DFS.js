@@ -1,13 +1,18 @@
-const iterateRecursively = (graph, x, y, hashMap, prevMap) => {
-  iterateRecursively(graph, x + 1, y, hashMap, prevMap);
-  iterateRecursively(graph, x - 1, y, hashMap, prevMap);
-  iterateRecursively(graph, x, y + 1, hashMap, prevMap);
-  iterateRecursively(graph, x, y - 1, hashMap, prevMap);
+const iterateRecursively = (graph, x, y, hashMap, prevMap, target) => {
+  if (graph[y][x].x == target.x && graph[y][x].y == target.y) {
+    return [{ x: x, y: y }]
+  }
+  if (x < 0 || x >= 5 || y < 0 || y >= 5) {
+    return null;
+  }
+  return iterateRecursively(graph, x + 1, y, hashMap, prevMap, target) ||
+    iterateRecursively(graph, x - 1, y, hashMap, prevMap, target) ||
+    iterateRecursively(graph, x, y + 1, hashMap, prevMap, target) ||
+    iterateRecursively(graph, x, y - 1, hashMap, prevMap, target);
 }
 
 const DFS = (refArray, graph, hashMap, prevMap, start, target) => {
-
-  DFS(refArray, graph, hashMap, prevMap, start, target);
+  return iterateRecursively(graph, start.x, start.y, hashMap, prevMap, target);
 }
 
 export {

@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import navbarStyle from './navbar.module.css'
-import Link from 'next/link';
 import { HiMagnifyingGlass, HiOutlineMoon, HiOutlineBars3 } from "react-icons/hi2";
 import { latoFont } from '../../../config/fonts'
 import { IoCloseOutline } from "react-icons/io5";

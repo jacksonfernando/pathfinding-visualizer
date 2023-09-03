@@ -65,13 +65,12 @@ const Grid = () => {
     }
     if (algo == 'DFS') {
       let result = DFS(refArray.current, grid, hashmap, prevmap, start.current, end.current)
-      createPath(result, prevmap)
+      //createPath(result, prevmap)
     }
   }, [run])
 
   return (
     <div className={gridStyle.container}>
-      {console.log(refArray.current)}
       {refArray.current.map((elem, index) => {
         let xIndex = Math.floor(index / 5)
         let yIndex = index % 5

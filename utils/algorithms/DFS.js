@@ -1,12 +1,13 @@
 const iterateRecursively = (refArray, graph, x, y, hashMap, prevMap, target) => {
   console.log('GRAPH', graph, x, y)
-  if (x < 0 || x >= 5 || y < 0 || y >= 5) {
+  if (x < 0 || x >= 5 || y < 0 || y >= 5 || hashMap[`${x}-${y}`]) {
     return null;
   }
   if (graph[y][x].x == target.x && graph[y][x].y == target.y) {
     return [{ x: x, y: y }]
   }
   refArray[x + y * 5].current = true;
+  hashMap[`${x}-${y}`] = true
   return iterateRecursively(refArray, graph, x + 1, y, hashMap, prevMap, target) ||
     iterateRecursively(refArray, graph, x - 1, y, hashMap, prevMap, target) ||
     iterateRecursively(refArray, graph, x, y + 1, hashMap, prevMap, target) ||

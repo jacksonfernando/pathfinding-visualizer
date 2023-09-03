@@ -5,6 +5,7 @@ import { useParams } from "../../../store/context";
 import { CiVirus, CiFlag1, CiLocationOn } from 'react-icons/ci'
 import gridStyle from './grid.module.css'
 import { BFS } from "../../../utils/algorithms/BFS";
+import { DFS } from "../../../utils/algorithms/DFS";
 
 const Grid = () => {
   const {
@@ -50,16 +51,20 @@ const Grid = () => {
   }
 
   useEffect(() => {
-    if (algo == 'BFS') {
-      let hashmap = {}
-      let prevmap = {}
-      for (let j = 0; j < 5; j++) {
-        for (let i = 0; i < 5; i++) {
-          hashmap[`${i}-${j}`] = false
-          prevmap[`${i}-${j}`] = null
-        }
+    let hashmap = {}
+    let prevmap = {}
+    for (let j = 0; j < 5; j++) {
+      for (let i = 0; i < 5; i++) {
+        hashmap[`${i}-${j}`] = false
+        prevmap[`${i}-${j}`] = null
       }
+    }
+    if (algo == 'BFS') {
       let result = BFS(refArray.current, grid, hashmap, prevmap, start.current, end.current)
+      createPath(result, prevmap)
+    }
+    if (algo == 'DFS') {
+      let result = DFS(refArray.current, grid, hashmap, prevmap, start.current, end.current)
       createPath(result, prevmap)
     }
   }, [run])

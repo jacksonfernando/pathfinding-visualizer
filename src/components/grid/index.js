@@ -49,8 +49,8 @@ const Grid = () => {
       refArray.current[elem.x + elem.y * 5].path = true;
     })
   }
+  const generateMapAndPreviousMap = () => {
 
-  useEffect(() => {
     let hashmap = {}
     let prevmap = {}
     for (let j = 0; j < 5; j++) {
@@ -59,6 +59,9 @@ const Grid = () => {
         prevmap[`${i}-${j}`] = null
       }
     }
+    return { hashmap, prevmap }
+  }
+  useEffect(() => {
     if (algo == 'BFS') {
       let result = BFS(refArray.current, grid, hashmap, prevmap, start.current, end.current)
       createPath(result, prevmap)

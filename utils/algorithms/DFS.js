@@ -1,5 +1,4 @@
 const iterateRecursively = (refArray, graph, x, y, hashMap, prevMap, target) => {
-  console.log('GRAPH', graph, x, y)
   if (x < 0 || x >= 5 || y < 0 || y >= 5 || hashMap[`${x}-${y}`]) {
     return null;
   }

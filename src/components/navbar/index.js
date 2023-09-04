@@ -14,7 +14,7 @@ const Navbar = () => {
   const { setAlgo, setRun, run, setRes, res } = useParams();
 
   const onRunSimulation = () => {
-    setAlgo('DFS');
+    setAlgo('BFS');
     setRun(!run);
   }
 

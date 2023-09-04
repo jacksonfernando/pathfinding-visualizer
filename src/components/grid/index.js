@@ -49,8 +49,8 @@ const Grid = () => {
       refArray.current[elem.x + elem.y * 5].path = true;
     })
   }
-  const generateMapAndPreviousMap = () => {
 
+  const generateMapAndPreviousMap = () => {
     let hashmap = {}
     let prevmap = {}
     for (let j = 0; j < 5; j++) {
@@ -61,6 +61,7 @@ const Grid = () => {
     }
     return { hashmap, prevmap }
   }
+
   useEffect(() => {
     const { hashmap, prevmap } = generateMapAndPreviousMap();
     if (algo == 'BFS') {
@@ -69,6 +70,8 @@ const Grid = () => {
     }
     if (algo == 'DFS') {
       let result = DFS(refArray.current, grid, hashmap, prevmap, start.current, end.current)
+      refArray.current[result[0].x + result[0].y * 5].path = true;
+      console.log(refArray.current)
       createPath(result, prevmap)
     }
   }, [run])

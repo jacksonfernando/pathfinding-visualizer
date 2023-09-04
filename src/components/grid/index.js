@@ -37,6 +37,7 @@ const Grid = () => {
 
   const createPath = (result, prevMap) => {
     let COORDINATE = result[0];
+    console.log(COORDINATE, prevMap)
     const path = [];
     if (COORDINATE) {
       while (prevMap[`${COORDINATE.x}-${COORDINATE.y}`]) {
@@ -65,11 +66,10 @@ const Grid = () => {
     const { hashmap, prevmap } = generateMapAndPreviousMap();
     if (algo == 'BFS') {
       let result = BFS(refArray.current, grid, hashmap, prevmap, start.current, end.current)
-      console.log(prevmap)
       createPath(result, prevmap)
     }
     if (algo == 'DFS') {
-      let result = DFS(refArray.current, grid, hashmap, prevmap, start.current, end.current)
+      let result = DFS(refArray.current, grid, hashmap, start.current, end.current)
       createPath(result, prevmap)
     }
   }, [run])

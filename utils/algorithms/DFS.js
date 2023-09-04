@@ -4,6 +4,7 @@ const iterateRecursively = (refArray, graph, x, y, hashMap, prevMap, target) => 
     return null;
   }
   if (graph[y][x].x == target.x && graph[y][x].y == target.y) {
+    refArray[x + y * 5].current = true;
     return [{ x: x, y: y }]
   }
   refArray[x + y * 5].current = true;

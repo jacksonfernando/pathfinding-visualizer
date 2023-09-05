@@ -1,6 +1,6 @@
 const NAVBAR_TITLE = 'Pathfinding Visualizer'
 
-const WIDTH = 20;
+const WIDTH = 10;
 
 const HEIGHT = 5;
 

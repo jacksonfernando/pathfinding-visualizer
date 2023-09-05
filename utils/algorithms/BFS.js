@@ -12,7 +12,7 @@ const BFS = (refArray, graph, hashMap, prevMap, start, target) => {
     refArray[xCoordinate + yCoordinate * WIDTH].current = true
     if (xCoordinate == target.x && yCoordinate == target.y) return [currentCoordinate, count]
 
-    if (xCoordinate + 1 < WIDTH && !hashMap[`${xCoordinate + 1}-${yCoordinate}`] && !graph[yCoordinate][xCoordinate + 1].isWall) {
+    if (xCoordinate + 1 < HEIGHT && !hashMap[`${xCoordinate + 1}-${yCoordinate}`] && !graph[yCoordinate][xCoordinate + 1].isWall) {
       queue.unshift({ x: xCoordinate + 1, y: yCoordinate })
       prevMap[`${xCoordinate + 1}-${yCoordinate}`] = { ...currentCoordinate }
       hashMap[`${xCoordinate + 1}-${yCoordinate}`] = true
@@ -24,7 +24,7 @@ const BFS = (refArray, graph, hashMap, prevMap, start, target) => {
       hashMap[`${xCoordinate - 1}-${yCoordinate}`] = true
     }
 
-    if (yCoordinate + 1 < HEIGHT && !hashMap[`${xCoordinate}-${yCoordinate + 1}`] && !graph[yCoordinate + 1][xCoordinate].isWall) {
+    if (yCoordinate + 1 < WIDTH && !hashMap[`${xCoordinate}-${yCoordinate + 1}`] && !graph[yCoordinate + 1][xCoordinate].isWall) {
       queue.unshift({ x: xCoordinate, y: yCoordinate + 1 })
       prevMap[`${xCoordinate}-${yCoordinate + 1}`] = { ...currentCoordinate }
       hashMap[`${xCoordinate}-${yCoordinate + 1}`] = true

@@ -78,8 +78,9 @@ const Grid = () => {
   return (
     <div className={gridStyle.container}>
       {refArray.current.map((elem, index) => {
+        console.log(grid)
         let xIndex = Math.floor(index / WIDTH)
-        let yIndex = index % HEIGHT
+        let yIndex = index % WIDTH
         let cell = grid[xIndex][yIndex]
 
         const style = !elem.current ? 'cell' : 'visited'

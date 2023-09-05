@@ -6,6 +6,7 @@ import { CiVirus, CiFlag1, CiLocationOn } from 'react-icons/ci'
 import gridStyle from './grid.module.css'
 import { BFS } from "../../../utils/algorithms/BFS";
 import { DFS } from "../../../utils/algorithms/DFS";
+import { HEIGHT, WIDTH } from "../../../constants/global";
 
 const Grid = () => {
   const {
@@ -46,15 +47,15 @@ const Grid = () => {
       }
     }
     path.reverse().forEach((elem) => {
-      refArray.current[elem.x + elem.y * 5].path = true;
+      refArray.current[elem.x + elem.y * WIDTH].path = true;
     })
   }
 
   const generateMapAndPreviousMap = () => {
     let hashmap = {}
     let prevmap = {}
-    for (let j = 0; j < 5; j++) {
-      for (let i = 0; i < 5; i++) {
+    for (let j = 0; j < WIDTH; j++) {
+      for (let i = 0; i < HEIGHT; i++) {
         hashmap[`${i}-${j}`] = false
         prevmap[`${i}-${j}`] = null
       }
@@ -77,8 +78,8 @@ const Grid = () => {
   return (
     <div className={gridStyle.container}>
       {refArray.current.map((elem, index) => {
-        let xIndex = Math.floor(index / 5)
-        let yIndex = index % 5
+        let xIndex = Math.floor(index / WIDTH)
+        let yIndex = index % HEIGHT
         let cell = grid[xIndex][yIndex]
 
         const style = !elem.current ? 'cell' : 'visited'

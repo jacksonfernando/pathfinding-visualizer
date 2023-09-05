@@ -84,6 +84,7 @@ const Grid = () => {
         let cell = grid[xIndex][yIndex]
 
         const style = !elem.current ? 'cell' : 'visited'
+        const path = elem.path && 'path'
 
         return (
           <div key={`${index}`} className={gridStyle[path || style]} >

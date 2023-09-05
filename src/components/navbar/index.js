@@ -8,10 +8,9 @@ import { IoCloseOutline } from "react-icons/io5";
 import { NAVBAR_TITLE } from '../../../constants/global';
 import { useParams } from '../../../store/context';
 
-
 const Navbar = () => {
   const [dropdownMenu, setDropdownMenu] = useState(false);
-  const { setAlgo, setRun, run, setRes, res } = useParams();
+  const { setAlgo, setRun, run, setRestart, restart } = useParams();
 
   const onRunSimulation = () => {
     setAlgo('DFS');
@@ -29,7 +28,7 @@ const Navbar = () => {
             <p onClick={() => onRunSimulation()}>Start</p>
           </li>
           <li>
-            <p onClick={() => setRes(!res)}>Clear Maze</p>
+            <p onClick={() => setRestart(!restart)}>Clear Maze</p>
           </li>
           <li>
             <p>Starting Position</p>

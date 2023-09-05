@@ -7,6 +7,7 @@ import {
   useEffect,
   useRef
 } from "react";
+import { HEIGHT, WIDTH } from "../constants/global";
 
 const context = createContext();
 
@@ -39,19 +40,15 @@ export const ParamsProvider = ({ children }) => {
   const [mode, setMode] = useState(null)
   const [algo, setAlgo] = useState('')
   const [run, setRun] = useState(false)
-  const [grid, setGrid] = useState(generateGrid(5, 5))
+  const [grid, setGrid] = useState(generateGrid(WIDTH, HEIGHT))
   const [editing, setEditFlag] = useState(false)
-  const [res, setRes] = useState(false)
+  const [restart, setRestart] = useState(false)
   const start = useRef({ x: 2, y: 2 })
   const end = useRef({ x: 4, y: 4 })
 
   useEffect(() => {
-    restart()
-  }, [res]);
-
-  function restart() {
-    setGrid(generateGrid(5, 5));
-  }
+    setGrid(generateGrid(WIDTH, HEIGHT));
+  }, [restart]);
 
   return (
     <div>
@@ -66,8 +63,8 @@ export const ParamsProvider = ({ children }) => {
         setGrid,
         editing,
         setEditFlag,
-        res,
-        setRes,
+        restart,
+        setRestart,
         start,
         end,
       }}>

@@ -37,7 +37,7 @@ const Grid = () => {
 
 
   const createPath = (result, prevMap) => {
-    let COORDINATE = result[0];
+    let COORDINATE = result && result[0];
     const path = [];
     if (COORDINATE) {
       while (prevMap[`${COORDINATE.x}-${COORDINATE.y}`]) {

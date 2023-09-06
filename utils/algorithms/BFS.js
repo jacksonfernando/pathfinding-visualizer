@@ -11,9 +11,12 @@ const BFS = (refArray, hashMap, prevMap, start, target) => {
     let yCoordinate = currentCoordinate.y;
     refArray[yCoordinate + (xCoordinate * WIDTH)].current = true
 
-    if (xCoordinate == target.x && yCoordinate == target.y) return [currentCoordinate, count]
+    if (xCoordinate == target.x && yCoordinate == target.y) {
+      console.log('FOUNDED')
+      return [currentCoordinate, count]
+    }
 
-    if (xCoordinate + 1 < WIDTH && !hashMap[`${xCoordinate + 1}-${yCoordinate}`]) {
+    if (xCoordinate + 1 < HEIGHT && !hashMap[`${xCoordinate + 1}-${yCoordinate}`]) {
       queue.unshift({ x: xCoordinate + 1, y: yCoordinate })
       prevMap[`${xCoordinate + 1}-${yCoordinate}`] = currentCoordinate;
       hashMap[`${xCoordinate + 1}-${yCoordinate}`] = true
@@ -25,7 +28,7 @@ const BFS = (refArray, hashMap, prevMap, start, target) => {
       hashMap[`${xCoordinate - 1}-${yCoordinate}`] = true
     }
 
-    if (yCoordinate + 1 < HEIGHT && !hashMap[`${xCoordinate}-${yCoordinate + 1}`]) {
+    if (yCoordinate + 1 < WIDTH && !hashMap[`${xCoordinate}-${yCoordinate + 1}`]) {
       queue.unshift({ x: xCoordinate, y: yCoordinate + 1 })
       prevMap[`${xCoordinate}-${yCoordinate + 1}`] = currentCoordinate;
       hashMap[`${xCoordinate}-${yCoordinate + 1}`] = true

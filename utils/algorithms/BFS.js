@@ -1,7 +1,6 @@
 import { HEIGHT, WIDTH } from "../../constants/global"
 
-const BFS = (refArray, graph, hashMap, prevMap, start, target) => {
-  console.log(start)
+const BFS = (refArray, hashMap, prevMap, start, target) => {
   let queue = [start]
   let count = 0
   hashMap[`${start.x}-${start.y}`] = true

@@ -65,7 +65,7 @@ const Grid = () => {
   useEffect(() => {
     const { hashmap, prevmap } = generateMapAndPreviousMap();
     if (algo == 'BFS') {
-      let result = BFS(refArray.current, grid, hashmap, prevmap, start.current, end.current)
+      let result = BFS(refArray.current, hashmap, prevmap, start.current, end.current)
       createPath(result, prevmap)
     }
     if (algo == 'DFS') {

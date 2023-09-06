@@ -9,6 +9,7 @@ const BFS = (refArray, graph, hashMap, prevMap, start, target) => {
     let currentCoordinate = queue.pop()
     let xCoordinate = currentCoordinate.x;
     let yCoordinate = currentCoordinate.y;
+    console.log(currentCoordinate)
     refArray[xCoordinate + yCoordinate * WIDTH].current = true
     if (xCoordinate == target.x && yCoordinate == target.y) return [currentCoordinate, count]
 

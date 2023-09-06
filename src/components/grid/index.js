@@ -38,7 +38,6 @@ const Grid = () => {
 
   const createPath = (result, prevMap) => {
     let COORDINATE = result[0];
-    console.log(COORDINATE, prevMap)
     const path = [];
     if (COORDINATE) {
       while (prevMap[`${COORDINATE.x}-${COORDINATE.y}`]) {
@@ -78,7 +77,6 @@ const Grid = () => {
   return (
     <div className={gridStyle.container}>
       {refArray.current.map((elem, index) => {
-        console.log(grid)
         let xIndex = Math.floor(index / WIDTH)
         let yIndex = index % WIDTH
         let cell = grid[xIndex][yIndex]

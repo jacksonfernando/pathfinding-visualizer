@@ -25,13 +25,12 @@ const generateGrid = (width, height) => {
         y: j,
         isStart: false,
         isTarget: false,
-        weight: 1,
-        isWall: false
+        weight: 1
       })
     }
     grid.push(local)
   }
-  grid[Math.floor(height / 2)][Math.floor(width / 2)].isStart = true
+  grid[1][0].isStart = true
   grid[height - 1][width - 1].isTarget = true
   return grid;
 }
@@ -43,8 +42,8 @@ export const ParamsProvider = ({ children }) => {
   const [grid, setGrid] = useState(generateGrid(WIDTH, HEIGHT))
   const [editing, setEditFlag] = useState(false)
   const [restart, setRestart] = useState(false)
-  const start = useRef({ x: Math.floor(HEIGHT / 2), y: Math.floor(WIDTH / 2) })
-  const end = useRef({ x: HEIGHT - 1, y: WIDTH - 1 })
+  const start = useRef({ x: 1, y: 0 })
+  const end = useRef({ x: WIDTH - 1, y: HEIGHT - 1 })
 
   useEffect(() => {
     setGrid(generateGrid(WIDTH, HEIGHT));

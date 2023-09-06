@@ -10,6 +10,7 @@ const BFS = (refArray, hashMap, prevMap, start, target) => {
     let xCoordinate = currentCoordinate.x;
     let yCoordinate = currentCoordinate.y;
     refArray[yCoordinate + (xCoordinate * WIDTH)].current = true
+    console.log(currentCoordinate, target);
 
     if (xCoordinate == target.x && yCoordinate == target.y) {
       console.log('FOUNDED')

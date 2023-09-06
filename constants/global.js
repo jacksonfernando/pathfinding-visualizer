@@ -1,8 +1,8 @@
 const NAVBAR_TITLE = 'Pathfinding Visualizer'
 
-const WIDTH = 50;
+const WIDTH = 30;
 
-const HEIGHT = 30;
+const HEIGHT = 10;
 
 export {
   NAVBAR_TITLE,

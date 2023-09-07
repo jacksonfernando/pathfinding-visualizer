@@ -2,17 +2,15 @@ import { HEIGHT, WIDTH } from "../../constants/global"
 
 const BFS = (refArray, hashMap, prevMap, start, target) => {
   let queue = [start]
-  let count = 0
   hashMap[`${start.x}-${start.y}`] = true
   while (queue.length > 0) {
-    count += 1
     let currentCoordinate = queue.pop()
     let xCoordinate = currentCoordinate.x;
     let yCoordinate = currentCoordinate.y;
     refArray[yCoordinate + (xCoordinate * WIDTH)].current = true
 
     if (xCoordinate == target.x && yCoordinate == target.y) {
-      return [currentCoordinate, count]
+      return [currentCoordinate]
     }
 
     if (xCoordinate + 1 < HEIGHT && !hashMap[`${xCoordinate + 1}-${yCoordinate}`]) {

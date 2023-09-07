@@ -7,7 +7,6 @@ import gridStyle from './grid.module.css'
 import { BFS } from "../../../utils/algorithms/BFS";
 import { DFS } from "../../../utils/algorithms/DFS";
 import { HEIGHT, WIDTH } from "../../../constants/global";
-
 const Grid = () => {
   const {
     grid,
@@ -17,6 +16,14 @@ const Grid = () => {
     res,
     algo
   } = useParams()
+
+  const gridContainerStyle = {
+    display: 'grid',
+    gridTemplateColumns: `repeat(${WIDTH}, 1fr)`,
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    padding: '2rem 20rem'
+  }
 
   const refArray = useRef([])
 
@@ -75,7 +82,7 @@ const Grid = () => {
   }, [run])
 
   return (
-    <div className={gridStyle.container}>
+    <div style={gridContainerStyle}>
       {refArray.current.map((elem, index) => {
         let xIndex = Math.floor(index / WIDTH)
         let yIndex = index % WIDTH

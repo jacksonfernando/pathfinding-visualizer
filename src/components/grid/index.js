@@ -46,7 +46,7 @@ const Grid = () => {
       }
     }
     path.reverse().forEach((elem) => {
-      refArray.current[elem.x + elem.y * WIDTH].path = true;
+      refArray.current[elem.y + elem.x * WIDTH].path = true;
     })
   }
 

@@ -5,7 +5,7 @@ import navbarStyle from './navbar.module.css'
 import { HiMagnifyingGlass, HiOutlineMoon, HiOutlineBars3 } from "react-icons/hi2";
 import { latoFont } from '../../../config/fonts'
 import { IoCloseOutline } from "react-icons/io5";
-import { NAVBAR_TITLE } from '../../../constants/global';
+import { DFS_ALGORITHM, NAVBAR_TITLE } from '../../../constants/global';
 import { useParams } from '../../../store/context';
 
 const Navbar = () => {
@@ -13,7 +13,7 @@ const Navbar = () => {
   const { setAlgo, setRun, run, setRestart, restart } = useParams();
 
   const onRunSimulation = () => {
-    setAlgo('BFS');
+    setAlgo(DFS_ALGORITHM);
     setRun(!run);
   }
 

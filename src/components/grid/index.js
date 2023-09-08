@@ -6,7 +6,7 @@ import { CiVirus, CiFlag1, CiLocationOn } from 'react-icons/ci'
 import gridStyle from './grid.module.css'
 import { BFS } from "../../../utils/algorithms/BFS";
 import { DFS } from "../../../utils/algorithms/DFS";
-import { HEIGHT, WIDTH } from "../../../constants/global";
+import { BFS_ALGORITHM, DFS_ALGORITHM, HEIGHT, WIDTH } from "../../../constants/global";
 const Grid = () => {
   const {
     grid,
@@ -71,11 +71,11 @@ const Grid = () => {
 
   useEffect(() => {
     const { hashmap, prevmap } = generateMapAndPreviousMap();
-    if (algo == 'BFS') {
+    if (algo == BFS_ALGORITHM) {
       let result = BFS(refArray.current, hashmap, prevmap, start.current, end.current)
       createPath(result, prevmap)
     }
-    if (algo == 'DFS') {
+    if (algo == DFS_ALGORITHM) {
       let result = DFS(refArray.current, grid, hashmap, start.current, end.current)
       createPath(result, prevmap)
     }

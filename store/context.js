@@ -15,11 +15,11 @@ export const useParams = () => {
   return useContext(context)
 };
 
-const generateGrid = (DEFAULT_WIDTH, DEFAULT_HEIGHT) => {
+const generateGrid = (width, height) => {
   let grid = []
-  for (let i = 0; i < DEFAULT_HEIGHT; i++) {
+  for (let i = 0; i < height; i++) {
     let local = []
-    for (let j = 0; j < DEFAULT_WIDTH; j++) {
+    for (let j = 0; j < width; j++) {
       local.push({
         x: i,
         y: j,
@@ -30,8 +30,8 @@ const generateGrid = (DEFAULT_WIDTH, DEFAULT_HEIGHT) => {
     }
     grid.push(local)
   }
-  grid[Math.floor(DEFAULT_HEIGHT / 2)][Math.floor(DEFAULT_WIDTH / 2)].isStart = true
-  grid[DEFAULT_HEIGHT - 1][DEFAULT_WIDTH - 1].isTarget = true
+  grid[Math.floor(height / 2)][Math.floor(width / 2)].isStart = true
+  grid[height - 1][width - 1].isTarget = true
   return grid;
 }
 

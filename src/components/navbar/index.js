@@ -31,6 +31,9 @@ const Navbar = () => {
             <p onClick={() => setRestart(!restart)}>Clear Maze</p>
           </li>
           <li>
+            <p onClick={() => setRestart(!restart)}>Grid Size</p>
+          </li>
+          <li>
             <p>Starting Position</p>
           </li>
         </ul>

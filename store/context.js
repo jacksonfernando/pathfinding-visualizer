@@ -7,7 +7,7 @@ import {
   useEffect,
   useRef
 } from "react";
-import { HEIGHT, WIDTH } from "../constants/global";
+import { DEFAULT_HEIGHT, DEFAULT_WIDTH } from "../constants/global";
 
 const context = createContext();
 
@@ -15,11 +15,11 @@ export const useParams = () => {
   return useContext(context)
 };
 
-const generateGrid = (width, height) => {
+const generateGrid = (DEFAULT_WIDTH, DEFAULT_HEIGHT) => {
   let grid = []
-  for (let i = 0; i < height; i++) {
+  for (let i = 0; i < DEFAULT_HEIGHT; i++) {
     let local = []
-    for (let j = 0; j < width; j++) {
+    for (let j = 0; j < DEFAULT_WIDTH; j++) {
       local.push({
         x: i,
         y: j,
@@ -30,8 +30,8 @@ const generateGrid = (width, height) => {
     }
     grid.push(local)
   }
-  grid[Math.floor(height / 2)][Math.floor(width / 2)].isStart = true
-  grid[height - 1][width - 1].isTarget = true
+  grid[Math.floor(DEFAULT_HEIGHT / 2)][Math.floor(DEFAULT_WIDTH / 2)].isStart = true
+  grid[DEFAULT_HEIGHT - 1][DEFAULT_WIDTH - 1].isTarget = true
   return grid;
 }
 
@@ -39,14 +39,14 @@ export const ParamsProvider = ({ children }) => {
   const [mode, setMode] = useState(null)
   const [algo, setAlgo] = useState('')
   const [run, setRun] = useState(false)
-  const [grid, setGrid] = useState(generateGrid(WIDTH, HEIGHT))
+  const [grid, setGrid] = useState(generateGrid(DEFAULT_WIDTH, DEFAULT_HEIGHT))
   const [editing, setEditFlag] = useState(false)
   const [restart, setRestart] = useState(false)
-  const start = useRef({ x: Math.floor(HEIGHT / 2), y: Math.floor(WIDTH / 2) })
-  const end = useRef({ x: HEIGHT - 1, y: WIDTH - 1 })
+  const start = useRef({ x: Math.floor(DEFAULT_HEIGHT / 2), y: Math.floor(DEFAULT_WIDTH / 2) })
+  const end = useRef({ x: DEFAULT_HEIGHT - 1, y: DEFAULT_WIDTH - 1 })
 
   useEffect(() => {
-    setGrid(generateGrid(WIDTH, HEIGHT));
+    setGrid(generateGrid(DEFAULT_WIDTH, DEFAULT_HEIGHT));
   }, [restart]);
 
   return (

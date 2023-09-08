@@ -6,7 +6,7 @@ import { CiVirus, CiFlag1, CiLocationOn } from 'react-icons/ci'
 import gridStyle from './grid.module.css'
 import { BFS } from "../../../utils/algorithms/BFS";
 import { DFS } from "../../../utils/algorithms/DFS";
-import { BFS_ALGORITHM, DFS_ALGORITHM, HEIGHT, WIDTH } from "../../../constants/global";
+import { BFS_ALGORITHM, DFS_ALGORITHM, DEFAULT_HEIGHT, DEFAULT_WIDTH } from "../../../constants/global";
 const Grid = () => {
   const {
     grid,
@@ -19,7 +19,7 @@ const Grid = () => {
 
   const gridContainerStyle = {
     display: 'grid',
-    gridTemplateColumns: `repeat(${WIDTH}, 1fr)`,
+    gridTemplateColumns: `repeat(${DEFAULT_WIDTH}, 1fr)`,
     flexDirection: 'row',
     flexWrap: 'wrap',
     padding: '2rem 20rem'
@@ -53,15 +53,15 @@ const Grid = () => {
       }
     }
     path.reverse().forEach((elem) => {
-      refArray.current[elem.y + elem.x * WIDTH].path = true;
+      refArray.current[elem.y + elem.x * DEFAULT_WIDTH].path = true;
     })
   }
 
   const generateMapAndPreviousMap = () => {
     let hashmap = {}
     let prevmap = {}
-    for (let j = 0; j < WIDTH; j++) {
-      for (let i = 0; i < HEIGHT; i++) {
+    for (let j = 0; j < DEFAULT_WIDTH; j++) {
+      for (let i = 0; i < DEFAULT_HEIGHT; i++) {
         hashmap[`${i}-${j}`] = false
         prevmap[`${i}-${j}`] = null
       }
@@ -84,8 +84,8 @@ const Grid = () => {
   return (
     <div style={gridContainerStyle}>
       {refArray.current.map((elem, index) => {
-        let xIndex = Math.floor(index / WIDTH)
-        let yIndex = index % WIDTH
+        let xIndex = Math.floor(index / DEFAULT_WIDTH)
+        let yIndex = index % DEFAULT_WIDTH
         let cell = grid[xIndex][yIndex]
 
         const style = !elem.current ? 'cell' : 'visited'

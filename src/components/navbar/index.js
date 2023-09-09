@@ -33,7 +33,7 @@ const Navbar = () => {
             <p onClick={() => setRestart(!restart)}>Clear Maze</p>
           </li>
           <li>
-            <p onClick={() => setIsModalOpen(!restart)}>Grid Size</p>
+            <p onClick={() => setIsModalOpen(!isModalOpen)}>Grid Size</p>
           </li>
           <li>
             <p>Starting Position</p>
@@ -78,7 +78,7 @@ const Navbar = () => {
           </div>
           {dropdownMenu && renderMenu(navbarStyle.dropdownMenu, navbarStyle.dropdownMenuList)}
         </div>
-        <Modal open={isModalOpen} />
+        <Modal open={isModalOpen} content={'JANCOOK'} setIsModalOpen={setIsModalOpen} />
       </header >
     </>
   )

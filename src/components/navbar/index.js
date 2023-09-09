@@ -7,7 +7,7 @@ import { latoFont } from '../../../config/fonts'
 import { IoCloseOutline } from "react-icons/io5";
 import { DFS_ALGORITHM, NAVBAR_TITLE } from '../../../constants/global';
 import { useParams } from '../../../store/context';
-import Modal from '../modal';
+import Algorithmsmodal from '../modal/AlgorithmsModal';
 
 const Navbar = () => {
   const [dropdownMenu, setDropdownMenu] = useState(false);
@@ -78,7 +78,7 @@ const Navbar = () => {
           </div>
           {dropdownMenu && renderMenu(navbarStyle.dropdownMenu, navbarStyle.dropdownMenuList)}
         </div>
-        <Modal open={isModalOpen} content={'JANCOOK'} setIsModalOpen={setIsModalOpen} />
+        <Algorithmsmodal open={isModalOpen} setIsModalOpen={setIsModalOpen} />
       </header >
     </>
   )

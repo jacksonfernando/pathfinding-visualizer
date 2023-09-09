@@ -1,8 +1,8 @@
 import modalStyle from './modal.module.css'
 import { IoCloseOutline } from "react-icons/io5";
 
-const Modal = ({ content, open, setIsModalOpen }) => {
-  return open && (
+const Modal = ({ content, setIsModalOpen }) => {
+  return (
     <div className={modalStyle.container}>
       <div className={modalStyle.closeIcon}>
         <IoCloseOutline

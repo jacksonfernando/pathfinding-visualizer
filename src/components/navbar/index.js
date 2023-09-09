@@ -7,9 +7,11 @@ import { latoFont } from '../../../config/fonts'
 import { IoCloseOutline } from "react-icons/io5";
 import { DFS_ALGORITHM, NAVBAR_TITLE } from '../../../constants/global';
 import { useParams } from '../../../store/context';
+import Modal from '../modal';
 
 const Navbar = () => {
   const [dropdownMenu, setDropdownMenu] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(true);
   const { setAlgo, setRun, run, setRestart, restart } = useParams();
 
   const onRunSimulation = () => {
@@ -31,7 +33,7 @@ const Navbar = () => {
             <p onClick={() => setRestart(!restart)}>Clear Maze</p>
           </li>
           <li>
-            <p onClick={() => setRestart(!restart)}>Grid Size</p>
+            <p onClick={() => setIsModalOpen(!restart)}>Grid Size</p>
           </li>
           <li>
             <p>Starting Position</p>
@@ -76,7 +78,8 @@ const Navbar = () => {
           </div>
           {dropdownMenu && renderMenu(navbarStyle.dropdownMenu, navbarStyle.dropdownMenuList)}
         </div>
-      </header>
+        <Modal open={isModalOpen} />
+      </header >
     </>
   )
 }

@@ -57,7 +57,7 @@
     background-color: rgba(10, 13, 20, 0.9);
     font-family: var(--font-lato);
     font-size: 1.2rem;
-    width: 100%rem;
+    width: 100%;
     grid-column: 3;
     grid-row: 2;
 }

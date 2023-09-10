@@ -12,7 +12,7 @@ import Algorithmsmodal from '../modal/AlgorithmsModal';
 const Navbar = () => {
   const [dropdownMenu, setDropdownMenu] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const { setRun, run, setRestart, restart, algo } = useParams();
+  const { setRun, run, setRestart, restart } = useParams();
 
   const renderMenu = (containerStyle, listStyle) => {
     return (

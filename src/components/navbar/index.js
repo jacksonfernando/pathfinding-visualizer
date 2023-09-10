@@ -5,7 +5,7 @@ import navbarStyle from './navbar.module.css'
 import { HiMagnifyingGlass, HiOutlineMoon, HiOutlineBars3 } from "react-icons/hi2";
 import { latoFont } from '../../../config/fonts'
 import { IoCloseOutline } from "react-icons/io5";
-import { DFS_ALGORITHM, NAVBAR_TITLE } from '../../../constants/global';
+import { NAVBAR_TITLE } from '../../../constants/global';
 import { useParams } from '../../../store/context';
 import Algorithmsmodal from '../modal/AlgorithmsModal';
 
@@ -13,11 +13,6 @@ const Navbar = () => {
   const [dropdownMenu, setDropdownMenu] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { setRun, run, setRestart, restart, algo } = useParams();
-
-  const onRunSimulation = () => {
-    console.log(algo)
-    setRun(!run);
-  }
 
   const renderMenu = (containerStyle, listStyle) => {
     return (
@@ -27,7 +22,7 @@ const Navbar = () => {
             <p onClick={() => setIsModalOpen(true)}>Algorithms</p>
           </li>
           <li>
-            <p onClick={() => onRunSimulation()}>Start</p>
+            <p onClick={() => setRun(!run)}>Start</p>
           </li>
           <li>
             <p onClick={() => setRestart(!restart)}>Clear Maze</p>

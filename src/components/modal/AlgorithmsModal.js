@@ -8,8 +8,8 @@ const Algorithmsmodal = ({ open, setIsModalOpen }) => {
   const AlgorithmContent = () => {
     return (
       <div>
-        <p onClick={setAlgo(BFS_ALGORITHM)}>BFS</p>
-        <p onClick={setAlgo(DFS_ALGORITHM)}>DFS</p>
+        <p onClick={() => setAlgo(BFS_ALGORITHM)}>BFS</p>
+        <p onClick={() => setAlgo(DFS_ALGORITHM)}>DFS</p>
         <p>Djakstra</p>
       </div>
     )

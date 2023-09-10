@@ -11,11 +11,11 @@ import Algorithmsmodal from '../modal/AlgorithmsModal';
 
 const Navbar = () => {
   const [dropdownMenu, setDropdownMenu] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(true);
-  const { setAlgo, setRun, run, setRestart, restart } = useParams();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const { setRun, run, setRestart, restart, algo } = useParams();
 
   const onRunSimulation = () => {
-    setAlgo(DFS_ALGORITHM);
+    console.log(algo)
     setRun(!run);
   }
 
@@ -24,7 +24,7 @@ const Navbar = () => {
       <div className={containerStyle}>
         <ul className={listStyle}>
           <li>
-            <p>Algorithms</p>
+            <p onClick={() => setIsModalOpen(true)}>Algorithms</p>
           </li>
           <li>
             <p onClick={() => onRunSimulation()}>Start</p>
@@ -33,7 +33,7 @@ const Navbar = () => {
             <p onClick={() => setRestart(!restart)}>Clear Maze</p>
           </li>
           <li>
-            <p onClick={() => setIsModalOpen(!isModalOpen)}>Grid Size</p>
+            <p onClick={() => setIsModalOpen(true)}>Grid Size</p>
           </li>
           <li>
             <p>Starting Position</p>

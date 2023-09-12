@@ -8,6 +8,8 @@ const Algorithmsmodal = ({ open, setIsModalOpen }) => {
   const AlgorithmContent = () => {
     return (
       <div>
+        <h2>Choose your Algorithm!</h2>
+        <br />
         <p onClick={() => {
           setAlgo(BFS_ALGORITHM)
           setIsModalOpen(false)

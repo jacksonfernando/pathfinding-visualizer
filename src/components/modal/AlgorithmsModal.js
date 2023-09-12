@@ -17,7 +17,6 @@ const Algorithmsmodal = ({ open, setIsModalOpen }) => {
         <br />
         <p onClick={setAlgoAndCloseModal(BFS_ALGORITHM)}>BFS</p>
         <p onClick={setAlgoAndCloseModal(DFS_ALGORITHM)}>DFS</p>
-        <p onClick={setAlgoAndCloseModal(DJAKSTRA_ALGORITHM)}>Djakstra</p>
       </div >
     )
   }

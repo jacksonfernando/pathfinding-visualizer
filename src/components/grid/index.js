@@ -77,8 +77,7 @@ const Grid = () => {
       createPath(result, prevmap)
     }
     if (algo == DFS_ALGORITHM) {
-      let result = DFS(refArray.current, grid, hashmap, start.current, end.current)
-      createPath(result, prevmap)
+      DFS(refArray.current, grid, hashmap, start.current, end.current)
     }
   }, [run])
 

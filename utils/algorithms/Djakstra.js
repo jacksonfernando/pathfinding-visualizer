@@ -15,3 +15,15 @@ const findMinDistance = (dist, sptSet) => {
   return minIdx
 }
 
+const Djakstra = (graph, start) => {
+  let verticesCount = DEFAULT_WIDTH * DEFAULT_HEIGHT;
+
+  let dist = new Array(verticesCount);
+  let sptSet = new Array(verticesCount);
+
+  for (let i = 0; i < verticesCount; i++) {
+    dist[i] = Number.MAX_VALUE;
+    sptSet[i] = false;
+  }
+}
+

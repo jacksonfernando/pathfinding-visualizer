@@ -13,6 +13,7 @@ import GridSizeModal from '../modal/GridSizeModal';
 const Navbar = () => {
   const [dropdownMenu, setDropdownMenu] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isGridModalOpen, setIsGridModalOpen] = useState(false);
   const { setRun, run, setRestart, restart } = useParams();
 
   const renderMenu = (containerStyle, listStyle) => {
@@ -75,7 +76,7 @@ const Navbar = () => {
           {dropdownMenu && renderMenu(navbarStyle.dropdownMenu, navbarStyle.dropdownMenuList)}
         </div>
         <Algorithmsmodal open={isModalOpen} setIsModalOpen={setIsModalOpen} />
-        <GridSizeModal open={true} setIsModalOpen={setIsModalOpen} />
+        <GridSizeModal open={isGridModalOpen} setIsModalOpen={setIsGridModalOpen} />
       </header >
     </>
   )

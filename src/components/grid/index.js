@@ -77,8 +77,7 @@ const Grid = () => {
       createPath(result, prevmap)
     }
     if (algo == DFS_ALGORITHM) {
-      let result = DFS(refArray.current, grid, hashmap, start.current, end.current)
-      createPath(result, prevmap)
+      DFS(refArray.current, grid, hashmap, start.current, end.current)
     }
   }, [run])
 
@@ -94,7 +93,6 @@ const Grid = () => {
 
         return (
           <div key={`${index}`} className={gridStyle[path || style]} >
-            {cell.weight > 1 ? <CiVirus size={20} color="pink" /> : null}
             {cell.isStart ? <CiLocationOn size={20} color="pink" /> : null}
             {cell.isTarget ? <CiFlag1 size={20} color="green" /> : null}
           </div>

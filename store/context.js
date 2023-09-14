@@ -19,13 +19,14 @@ const generateGrid = (width, height) => {
   let grid = []
   for (let i = 0; i < height; i++) {
     let local = []
+    const RANDOM_ONE_TO_TEN = Math.floor(Math.random() * 10) + 1;
     for (let j = 0; j < width; j++) {
       local.push({
         x: i,
         y: j,
         isStart: false,
         isTarget: false,
-        weight: 1
+        weight: RANDOM_ONE_TO_TEN
       })
     }
     grid.push(local)

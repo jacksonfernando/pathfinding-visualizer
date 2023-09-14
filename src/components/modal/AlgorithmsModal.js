@@ -2,7 +2,7 @@ import Modal from "."
 import { BFS_ALGORITHM, DFS_ALGORITHM, DJAKSTRA_ALGORITHM } from "../../../constants/global"
 import { useParams } from "../../../store/context"
 
-const Algorithmsmodal = ({ open, setIsModalOpen }) => {
+const AlgorithmsModal = ({ open, setIsModalOpen }) => {
   const { setAlgo } = useParams()
 
   const setAlgoAndCloseModal = (algo) => {
@@ -15,8 +15,8 @@ const Algorithmsmodal = ({ open, setIsModalOpen }) => {
       <div>
         <h2>Choose your Algorithm!</h2>
         <br />
-        <p onClick={setAlgoAndCloseModal(BFS_ALGORITHM)}>BFS</p>
-        <p onClick={setAlgoAndCloseModal(DFS_ALGORITHM)}>DFS</p>
+        <p onClick={() => setAlgoAndCloseModal(BFS_ALGORITHM)}>BFS</p>
+        <p onClick={() => setAlgoAndCloseModal(DFS_ALGORITHM)}>DFS</p>
       </div >
     )
   }
@@ -25,4 +25,4 @@ const Algorithmsmodal = ({ open, setIsModalOpen }) => {
   )
 }
 
-export default Algorithmsmodal
+export default AlgorithmsModal

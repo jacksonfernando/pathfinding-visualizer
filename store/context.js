@@ -38,6 +38,7 @@ const generateGrid = (width, height) => {
 
 export const ParamsProvider = ({ children }) => {
   const [mode, setMode] = useState(null)
+  const [widthHeight, setWidthHeight] = useState(`${DEFAULT_WIDTH}-${DEFAULT_HEIGHT}`);
   const [algo, setAlgo] = useState('')
   const [run, setRun] = useState(false)
   const [grid, setGrid] = useState(generateGrid(DEFAULT_WIDTH, DEFAULT_HEIGHT))
@@ -67,6 +68,8 @@ export const ParamsProvider = ({ children }) => {
         setRestart,
         start,
         end,
+        widthHeight,
+        setWidthHeight
       }}>
         {children}
       </context.Provider>

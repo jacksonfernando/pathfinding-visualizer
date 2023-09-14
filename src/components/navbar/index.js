@@ -8,6 +8,7 @@ import { IoCloseOutline } from "react-icons/io5";
 import { NAVBAR_TITLE } from '../../../constants/global';
 import { useParams } from '../../../store/context';
 import Algorithmsmodal from '../modal/AlgorithmsModal';
+import GridSizeModal from '../modal/GridSizeModal';
 
 const Navbar = () => {
   const [dropdownMenu, setDropdownMenu] = useState(false);
@@ -74,6 +75,7 @@ const Navbar = () => {
           {dropdownMenu && renderMenu(navbarStyle.dropdownMenu, navbarStyle.dropdownMenuList)}
         </div>
         <Algorithmsmodal open={isModalOpen} setIsModalOpen={setIsModalOpen} />
+        <GridSizeModal open={true} setIsModalOpen={setIsModalOpen} />
       </header >
     </>
   )

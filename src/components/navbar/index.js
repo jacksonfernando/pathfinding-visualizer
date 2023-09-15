@@ -30,7 +30,7 @@ const Navbar = () => {
             <p onClick={() => setRestart(!restart)}>Clear Maze</p>
           </li>
           <li>
-            <p onClick={() => setIsModalOpen(true)}>Grid Size</p>
+            <p onClick={() => setIsGridModalOpen(true)}>Grid Size</p>
           </li>
           <li>
             <p>Starting Position</p>

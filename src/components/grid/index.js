@@ -2,7 +2,7 @@
 
 import { useRef, useEffect } from "react";
 import { useParams } from "../../../store/context";
-import { CiVirus, CiFlag1, CiLocationOn } from 'react-icons/ci'
+import { CiFlag1, CiLocationOn } from 'react-icons/ci'
 import gridStyle from './grid.module.css'
 import { BFS } from "../../../utils/algorithms/BFS";
 import { DFS } from "../../../utils/algorithms/DFS";

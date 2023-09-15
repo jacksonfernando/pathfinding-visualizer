@@ -6,15 +6,7 @@ import { CiFlag1, CiLocationOn } from 'react-icons/ci'
 import gridStyle from './grid.module.css'
 import { BFS } from "../../../utils/algorithms/BFS";
 import { DFS } from "../../../utils/algorithms/DFS";
-import { BFS_ALGORITHM, DFS_ALGORITHM, DEFAULT_HEIGHT, DEFAULT_WIDTH } from "../../../constants/global";
-
-const gridContainerStyle = {
-  display: 'grid',
-  gridTemplateColumns: `repeat(${DEFAULT_WIDTH}, 1fr)`,
-  flexDirection: 'row',
-  flexWrap: 'wrap',
-  padding: '2rem 20rem'
-}
+import { BFS_ALGORITHM, DFS_ALGORITHM } from "../../../constants/global";
 
 const Grid = () => {
   const {
@@ -23,14 +15,25 @@ const Grid = () => {
     end,
     run,
     res,
-    algo
+    algo,
+    dimension
   } = useParams()
+
+  const { width, height } = dimension
+
+  const gridContainerStyle = {
+    display: 'grid',
+    gridTemplateColumns: `repeat(${width}, 1fr)`,
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    padding: '2rem 20rem'
+  }
 
   const refArray = useRef([])
 
   useEffect(() => {
     refArray.current = [];
-    const gridSize = grid.length * grid[0].length;
+    const gridSize = width * height;
     for (let i = 0; i < gridSize; i++) {
       refArray.current.push({ current: false })
     }
@@ -54,15 +57,15 @@ const Grid = () => {
       }
     }
     path.reverse().forEach((elem) => {
-      refArray.current[elem.y + elem.x * DEFAULT_WIDTH].path = true;
+      refArray.current[elem.y + elem.x * width].path = true;
     })
   }
 
   const generateMapAndPreviousMap = () => {
     let hashmap = {}
     let prevmap = {}
-    for (let j = 0; j < DEFAULT_WIDTH; j++) {
-      for (let i = 0; i < DEFAULT_HEIGHT; i++) {
+    for (let j = 0; j < width; j++) {
+      for (let i = 0; i < dimension.heigth; i++) {
         hashmap[`${i}-${j}`] = false
         prevmap[`${i}-${j}`] = null
       }
@@ -84,8 +87,9 @@ const Grid = () => {
   return (
     <div style={gridContainerStyle}>
       {refArray.current.map((elem, index) => {
-        let xIndex = Math.floor(index / DEFAULT_WIDTH)
-        let yIndex = index % DEFAULT_WIDTH
+        let xIndex = Math.floor(index / width)
+        let yIndex = index % height
+        console.log(xIndex, yIndex)
         let cell = grid[xIndex][yIndex]
 
         const style = !elem.current ? 'cell' : 'visited'

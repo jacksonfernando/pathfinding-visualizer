@@ -48,8 +48,9 @@ export const ParamsProvider = ({ children }) => {
   const end = useRef({ x: dimension.height - 1, y: dimension.width - 1 })
 
   useEffect(() => {
+    console.log(dimension);
     setGrid(generateGrid(dimension.width, dimension.height));
-  }, [restart]);
+  }, [restart, dimension]);
 
   return (
     <div>

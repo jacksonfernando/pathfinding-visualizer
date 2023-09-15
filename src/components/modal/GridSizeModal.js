@@ -1,7 +1,9 @@
 import { useRef } from "react"
 import Modal from "."
+import { useParams } from "../../../store/context";
 
 const GridSizeModal = ({ open, setIsModalOpen }) => {
+  const { setWidthHeight } = useParams();
   const widthRef = useRef();
   const heightRef = useRef();
 
@@ -16,7 +18,11 @@ const GridSizeModal = ({ open, setIsModalOpen }) => {
         <label>Height :</label>
         <input type="text" ref={heightRef} />
         <br /><br />
-        <button type="submit" >Submit</button>
+        <button type="submit"
+          onClick={() => setWidthHeight(`${widthRef.current}-${heightRef.current}`)}
+        >
+          Submit
+        </button>
       </div >
     )
   }

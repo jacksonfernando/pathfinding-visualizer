@@ -44,11 +44,11 @@ export const ParamsProvider = ({ children }) => {
   const [grid, setGrid] = useState(generateGrid(DEFAULT_WIDTH, DEFAULT_HEIGHT))
   const [editing, setEditFlag] = useState(false)
   const [restart, setRestart] = useState(false)
-  const start = useRef({ x: Math.floor(wid / 2), y: Math.floor(DEFAULT_WIDTH / 2) })
-  const end = useRef({ x: DEFAULT_HEIGHT - 1, y: DEFAULT_WIDTH - 1 })
+  const start = useRef({ x: Math.floor(dimension.height / 2), y: Math.floor(dimension.width / 2) })
+  const end = useRef({ x: dimension.height - 1, y: dimension.width - 1 })
 
   useEffect(() => {
-    setGrid(generateGrid(DEFAULT_WIDTH, DEFAULT_HEIGHT));
+    setGrid(generateGrid(dimension.width, dimension.height));
   }, [restart]);
 
   return (

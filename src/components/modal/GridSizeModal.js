@@ -19,7 +19,9 @@ const GridSizeModal = ({ open, setIsModalOpen }) => {
         <input type="text" ref={heightRef} />
         <br /><br />
         <button type="submit"
-          onClick={() => setDimension({ width: widthRef.current, height: heightRef.current })}
+          onClick={() => setDimension(
+            { width: widthRef.current, height: heightRef.current }
+          )}
         >
           Submit
         </button>

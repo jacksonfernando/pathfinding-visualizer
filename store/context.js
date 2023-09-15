@@ -38,13 +38,13 @@ const generateGrid = (width, height) => {
 
 export const ParamsProvider = ({ children }) => {
   const [mode, setMode] = useState(null)
-  const [widthHeight, setWidthHeight] = useState(`${DEFAULT_WIDTH}-${DEFAULT_HEIGHT}`);
+  const [dimension, setDimension] = useState({ width: DEFAULT_WIDTH, height: DEFAULT_HEIGHT });
   const [algo, setAlgo] = useState('')
   const [run, setRun] = useState(false)
   const [grid, setGrid] = useState(generateGrid(DEFAULT_WIDTH, DEFAULT_HEIGHT))
   const [editing, setEditFlag] = useState(false)
   const [restart, setRestart] = useState(false)
-  const start = useRef({ x: Math.floor(DEFAULT_HEIGHT / 2), y: Math.floor(DEFAULT_WIDTH / 2) })
+  const start = useRef({ x: Math.floor(wid / 2), y: Math.floor(DEFAULT_WIDTH / 2) })
   const end = useRef({ x: DEFAULT_HEIGHT - 1, y: DEFAULT_WIDTH - 1 })
 
   useEffect(() => {
@@ -68,8 +68,8 @@ export const ParamsProvider = ({ children }) => {
         setRestart,
         start,
         end,
-        widthHeight,
-        setWidthHeight
+        dimension,
+        setDimension
       }}>
         {children}
       </context.Provider>

@@ -89,7 +89,7 @@ const Grid = () => {
       {refArray.current.map((elem, index) => {
         let xIndex = Math.floor(index / width)
         let yIndex = index % height
-        console.log(xIndex, yIndex)
+        console.log('XINDEX_YINDEX', xIndex, yIndex)
         let cell = grid[xIndex][yIndex]
 
         const style = !elem.current ? 'cell' : 'visited'

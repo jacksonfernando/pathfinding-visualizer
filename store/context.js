@@ -41,7 +41,7 @@ export const ParamsProvider = ({ children }) => {
   const [dimension, setDimension] = useState({ width: DEFAULT_WIDTH, height: DEFAULT_HEIGHT });
   const [algo, setAlgo] = useState('')
   const [run, setRun] = useState(false)
-  const [grid, setGrid] = useState(generateGrid(DEFAULT_WIDTH, DEFAULT_HEIGHT))
+  const [grid, setGrid] = useState(generateGrid(dimension.width, dimension.height))
   const [editing, setEditFlag] = useState(false)
   const [restart, setRestart] = useState(false)
   const start = useRef({ x: Math.floor(dimension.height / 2), y: Math.floor(dimension.width / 2) })

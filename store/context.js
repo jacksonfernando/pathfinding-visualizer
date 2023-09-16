@@ -16,7 +16,6 @@ export const useParams = () => {
 };
 
 const generateGrid = (width, height) => {
-  console.log('WIDTH_HEIGHT', Math.floor(width / 2), Math.floor(height / 2))
   let grid = []
   for (let i = 0; i < height; i++) {
     let local = []
@@ -33,7 +32,6 @@ const generateGrid = (width, height) => {
     grid.push(local)
   }
   grid[Math.floor(height / 2)][Math.floor(width / 2)].isStart = true
-  console.log('GRID', grid)
   grid[height - 1][width - 1].isTarget = true
   return grid;
 }
@@ -46,7 +44,6 @@ export const ParamsProvider = ({ children }) => {
   const [grid, setGrid] = useState(generateGrid(dimension.width, dimension.height))
   const [editing, setEditFlag] = useState(false)
   const [restart, setRestart] = useState(false)
-  console.log('DIMENSION', dimension)
   const start = useRef({ x: Math.floor(dimension.height / 2), y: Math.floor(dimension.width / 2) })
   const end = useRef({ x: dimension.height - 1, y: dimension.width - 1 })
 

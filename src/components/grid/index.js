@@ -88,7 +88,7 @@ const Grid = () => {
     <div style={gridContainerStyle}>
       {refArray.current.map((elem, index) => {
         let xIndex = Math.floor(index / width)
-        let yIndex = index % height
+        let yIndex = index % width
         console.log('XINDEX_YINDEX', xIndex, yIndex)
         let cell = grid[xIndex][yIndex]
 

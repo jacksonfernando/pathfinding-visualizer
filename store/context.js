@@ -32,8 +32,8 @@ const generateGrid = (width, height) => {
     }
     grid.push(local)
   }
-  console.log('GRID', grid)
   grid[Math.floor(height / 2)][Math.floor(width / 2)].isStart = true
+  console.log('GRID', grid)
   grid[height - 1][width - 1].isTarget = true
   return grid;
 }

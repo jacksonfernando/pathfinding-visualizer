@@ -65,7 +65,7 @@ const Grid = () => {
     let hashmap = {}
     let prevmap = {}
     for (let j = 0; j < width; j++) {
-      for (let i = 0; i < dimension.heigth; i++) {
+      for (let i = 0; i < height; i++) {
         hashmap[`${i}-${j}`] = false
         prevmap[`${i}-${j}`] = null
       }

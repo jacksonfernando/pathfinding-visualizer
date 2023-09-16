@@ -44,6 +44,7 @@ export const ParamsProvider = ({ children }) => {
   const [grid, setGrid] = useState(generateGrid(dimension.width, dimension.height))
   const [editing, setEditFlag] = useState(false)
   const [restart, setRestart] = useState(false)
+  console.log('DIMENSION', dimension)
   const start = useRef({ x: Math.floor(dimension.height / 2), y: Math.floor(dimension.width / 2) })
   const end = useRef({ x: dimension.height - 1, y: dimension.width - 1 })
 

@@ -94,6 +94,7 @@ const Grid = () => {
 
         const style = !elem.current ? 'cell' : 'visited'
         const path = elem.path && 'path'
+        console.log('CELL', cell)
 
         return (
           <div key={`${index}`} className={gridStyle[path || style]} >

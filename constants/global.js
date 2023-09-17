@@ -1,14 +1,14 @@
-const NAVBAR_TITLE = 'Pathfinding Visualizer'
+const NAVBAR_TITLE = 'Pathfinding Visualizer';
 
 const DEFAULT_WIDTH = 20;
 
 const DEFAULT_HEIGHT = 10;
 
-const DFS_ALGORITHM = 'DFS'
+const DFS_ALGORITHM = 'DFS';
 
-const BFS_ALGORITHM = 'BFS'
+const BFS_ALGORITHM = 'BFS';
 
-const DIJKSTRA_ALGORITHM = 'DIJKSTRA'
+const DIJKSTRA_ALGORITHM = 'DIJKSTRA';
 
 export {
   NAVBAR_TITLE,

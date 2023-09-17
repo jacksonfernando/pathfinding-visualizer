@@ -1,45 +1,38 @@
-import { DEFAULT_HEIGHT, DEFAULT_WIDTH } from "../../constants/global"
-
-const Djakstra = (refArray, hashMap, prevMap, start, target) => {
-  let queue = [start]
-  hashMap[`${start.x}-${start.y}`] = true
-  while (queue.length > 0) {
-    let currentCoordinate = queue.pop()
-    let xCoordinate = currentCoordinate.x;
-    let yCoordinate = currentCoordinate.y;
-    refArray[yCoordinate + (xCoordinate * DEFAULT_WIDTH)].current = true
-
-    if (xCoordinate == target.x && yCoordinate == target.y) {
-      return [currentCoordinate]
-    }
-
-    if (xCoordinate + 1 < DEFAULT_HEIGHT && !hashMap[`${xCoordinate + 1}-${yCoordinate}`]) {
-      queue.unshift({ x: xCoordinate + 1, y: yCoordinate })
-      prevMap[`${xCoordinate + 1}-${yCoordinate}`] = currentCoordinate;
-      hashMap[`${xCoordinate + 1}-${yCoordinate}`] = true
-    }
-
-    if (xCoordinate - 1 >= 0 && !hashMap[`${xCoordinate - 1}-${yCoordinate}`]) {
-      queue.unshift({ x: xCoordinate - 1, y: yCoordinate })
-      prevMap[`${xCoordinate - 1}-${yCoordinate}`] = currentCoordinate;
-      hashMap[`${xCoordinate - 1}-${yCoordinate}`] = true
-    }
-
-    if (yCoordinate + 1 < DEFAULT_WIDTH && !hashMap[`${xCoordinate}-${yCoordinate + 1}`]) {
-      queue.unshift({ x: xCoordinate, y: yCoordinate + 1 })
-      prevMap[`${xCoordinate}-${yCoordinate + 1}`] = currentCoordinate;
-      hashMap[`${xCoordinate}-${yCoordinate + 1}`] = true
-    }
-
-    if (yCoordinate - 1 >= 0 && !hashMap[`${xCoordinate}-${yCoordinate - 1}`]) {
-      queue.unshift({ x: xCoordinate, y: yCoordinate - 1 })
-      prevMap[`${xCoordinate}-${yCoordinate - 1}`] = currentCoordinate
-      hashMap[`${xCoordinate}-${yCoordinate - 1}`] = true
-    }
+const checkNeighboursAndPushToQueue = (graph, currentCell, hashMap) => {
+  const { x, y } = currentCell;
+  if (graph[x + 1][y].x < MAX_WIDTH && !hashMap[x + 1][y]) {
+    currentCell.neighbours.push(graph[x + 1][y])
   }
-  return null
+  if (graph[x - 1][y].x >= 0 && !hashMap[x + 1][y]) {
+    currentCell.neighbours.push(graph[x - 1][y])
+  }
+  if (graph[x][y + 1].y < MAX_HEIGHT && !hashMap[x + 1][y]) {
+    currentCell.neighbours.push(graph[x][y + 1])
+  }
+  if (graph[x][y - 1].y >= 0 && !hashMap[x + 1][y]) {
+    currentCell.neighbours.push(graph[x][y - 1])
+  }
+  for (let cell of currentCell) {
+    queue.push({ x: cell.x, y: cell.y })
+  }
+}
+
+const Djakstra = (refArray, graph, hashMap, start, target,) => {
+  let queue = [start];
+  const MAX_WIDTH = graph.length;
+  const MAX_HEIGHT = graph[0].length;
+  while (queue.length > 0) {
+    const currentCell = queue.pop();
+    refArray[currentCell.y + (currentCell.x * MAX_WIDTH)].current = true;
+    hashMap[`${currentCell.x}-${currentCell.y}`] = true;
+    if (graph[currentCell.x][currentCell.y] == target.x
+      && graph[currentCell.x][currentCell.y] == target.y) {
+      return [currentCell]
+    }
+    checkNeighboursAndPushToQueue(queue, graph, currentCell, MAX_WIDTH, MAX_HEIGHT)
+  }
 }
 
 export {
-  BFS
+  Djakstra
 }

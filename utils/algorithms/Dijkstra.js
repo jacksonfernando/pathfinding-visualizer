@@ -21,23 +21,21 @@ const checkNeighboursAndPushToQueue = (queue, graph, currentCell, hashMap, width
   }
 }
 
-const dijkstra = (refArray, graph, hashMap, start, target,) => {
+const dijkstra = (refArray, graph, hashMap, start, target) => {
   let queue = [graph[start.x][start.y]];
   const MAX_HEIGHT = graph.length;
   const MAX_WIDTH = graph[0].length;
   while (queue.length > 0) {
-    console.log(graph);
-    console.log('QUEUE', queue)
     const currentCell = queue.pop();
     refArray[currentCell.y + (currentCell.x * MAX_WIDTH)].current = true;
-    hashMap[`${currentCell.x}-${currentCell.y}`] = true;
-    if (graph[currentCell.x][currentCell.y].x == target.x
-      && graph[currentCell.x][currentCell.y].y == target.y) {
+    if (currentCell.x == target.x && currentCell.y == target.y) {
       return [currentCell]
     }
-    console.log(hashMap);
-    console.log('CURRENT', currentCell);
+    if (hashMap[`${currentCell.x}-${currentCell.y}`]) {
+      queue.pop();
+    }
     checkNeighboursAndPushToQueue(queue, graph, currentCell, hashMap, MAX_WIDTH, MAX_HEIGHT)
+    hashMap[`${currentCell.x}-${currentCell.y}`] = true;
   }
   return null
 }

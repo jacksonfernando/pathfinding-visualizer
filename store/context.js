@@ -19,14 +19,12 @@ const generateGrid = (width, height) => {
   let grid = []
   for (let i = 0; i < height; i++) {
     let local = []
-    const RANDOM_ONE_TO_TEN = Math.floor(Math.random() * 10) + 1;
     for (let j = 0; j < width; j++) {
       local.push({
         x: i,
         y: j,
         isStart: false,
         isTarget: false,
-        weight: RANDOM_ONE_TO_TEN,
         neighbours: []
       })
     }
@@ -40,16 +38,17 @@ const generateGrid = (width, height) => {
 export const ParamsProvider = ({ children }) => {
   const [mode, setMode] = useState(null)
   const [dimension, setDimension] = useState({ width: DEFAULT_WIDTH, height: DEFAULT_HEIGHT });
+  const { height, width } = dimension;
   const [algo, setAlgo] = useState('')
   const [run, setRun] = useState(false)
-  const [grid, setGrid] = useState(generateGrid(dimension.width, dimension.height))
+  const [grid, setGrid] = useState(generateGrid(width, height))
   const [editing, setEditFlag] = useState(false)
   const [restart, setRestart] = useState(false)
-  const start = useRef({ x: Math.floor(dimension.height / 2), y: Math.floor(dimension.width / 2) })
-  const end = useRef({ x: dimension.height - 1, y: dimension.width - 1 })
+  const start = useRef({ x: Math.floor(height / 2), y: Math.floor(width / 2) })
+  const end = useRef({ x: height - 1, y: width - 1 })
 
   useEffect(() => {
-    setGrid(generateGrid(dimension.width, dimension.height));
+    setGrid(generateGrid(width, height));
   }, [restart, dimension]);
 
   return (

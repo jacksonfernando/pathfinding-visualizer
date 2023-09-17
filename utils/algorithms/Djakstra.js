@@ -31,6 +31,7 @@ const Djakstra = (refArray, graph, hashMap, start, target,) => {
     }
     checkNeighboursAndPushToQueue(queue, graph, currentCell, MAX_WIDTH, MAX_HEIGHT)
   }
+  return null
 }
 
 export {

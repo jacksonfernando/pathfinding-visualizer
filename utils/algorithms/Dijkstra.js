@@ -1,12 +1,12 @@
-const checkNeighboursAndPushToQueue = (graph, currentCell, hashMap) => {
+const checkNeighboursAndPushToQueue = (queue, graph, currentCell, hashMap, width, height) => {
   const { x, y } = currentCell;
-  if (graph[x + 1][y].x < MAX_WIDTH && !hashMap[x + 1][y]) {
+  if (graph[x + 1][y].x < height && !hashMap[x + 1][y]) {
     currentCell.neighbours.push(graph[x + 1][y])
   }
   if (graph[x - 1][y].x >= 0 && !hashMap[x + 1][y]) {
     currentCell.neighbours.push(graph[x - 1][y])
   }
-  if (graph[x][y + 1].y < MAX_HEIGHT && !hashMap[x + 1][y]) {
+  if (graph[x][y + 1].y < width && !hashMap[x + 1][y]) {
     currentCell.neighbours.push(graph[x][y + 1])
   }
   if (graph[x][y - 1].y >= 0 && !hashMap[x + 1][y]) {

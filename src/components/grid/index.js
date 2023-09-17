@@ -84,7 +84,7 @@ const Grid = () => {
       dfs(refArray.current, grid, hashmap, start.current, end.current)
     }
     if (algo == DIJKSTRA_ALGORITHM) {
-      dijkstra()
+      dijkstra(refArray.current, grid, hashmap, start.current, end.current)
     }
   }, [run])
 

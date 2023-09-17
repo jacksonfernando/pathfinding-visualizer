@@ -26,7 +26,8 @@ const generateGrid = (width, height) => {
         y: j,
         isStart: false,
         isTarget: false,
-        weight: RANDOM_ONE_TO_TEN
+        weight: RANDOM_ONE_TO_TEN,
+        neighbours: []
       })
     }
     grid.push(local)

@@ -4,9 +4,10 @@ import { useRef, useEffect } from "react";
 import { useParams } from "../../../store/context";
 import { CiFlag1, CiLocationOn } from 'react-icons/ci'
 import gridStyle from './grid.module.css'
-import { BFS } from "../../../utils/algorithms/BFS";
-import { DFS } from "../../../utils/algorithms/DFS";
-import { BFS_ALGORITHM, DFS_ALGORITHM } from "../../../constants/global";
+import { bfs } from "../../../utils/algorithms/BFS";
+import { dfs } from "../../../utils/algorithms/DFS";
+import { BFS_ALGORITHM, DFS_ALGORITHM, DIJKSTRA_ALGORITHM } from "../../../constants/global";
+import { dijkstra } from "../../../utils/algorithms/Dijkstra";
 
 const Grid = () => {
   const {
@@ -76,11 +77,14 @@ const Grid = () => {
   useEffect(() => {
     const { hashmap, prevmap } = generateMapAndPreviousMap();
     if (algo == BFS_ALGORITHM) {
-      let result = BFS(refArray.current, hashmap, prevmap, start.current, end.current)
+      let result = bfs(refArray.current, hashmap, prevmap, start.current, end.current)
       createPath(result, prevmap)
     }
     if (algo == DFS_ALGORITHM) {
-      DFS(refArray.current, grid, hashmap, start.current, end.current)
+      dfs(refArray.current, grid, hashmap, start.current, end.current)
+    }
+    if (algo == DIJKSTRA_ALGORITHM) {
+      dijkstra()
     }
   }, [run])
 

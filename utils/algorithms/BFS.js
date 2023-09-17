@@ -1,6 +1,6 @@
 import { DEFAULT_HEIGHT, DEFAULT_WIDTH } from "../../constants/global"
 
-const BFS = (refArray, hashMap, prevMap, start, target) => {
+const bfs = (refArray, hashMap, prevMap, start, target) => {
   let queue = [start]
   hashMap[`${start.x}-${start.y}`] = true
   while (queue.length > 0) {
@@ -41,5 +41,5 @@ const BFS = (refArray, hashMap, prevMap, start, target) => {
 }
 
 export {
-  BFS
+  bfs
 }

@@ -16,11 +16,11 @@ const iterateRecursively = (refArray, graph, x, y, hashMap, target) => {
     iterateRecursively(refArray, graph, x, y - 1, hashMap, target);
 }
 
-const DFS = (refArray, graph, hashMap, start, target) => {
+const dfs = (refArray, graph, hashMap, start, target) => {
   const result = iterateRecursively(refArray, graph, start.x, start.y, hashMap, target);
   return result;
 }
 
 export {
-  DFS
+  dfs
 }

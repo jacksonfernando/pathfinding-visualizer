@@ -17,7 +17,7 @@ const checkNeighboursAndPushToQueue = (graph, currentCell, hashMap) => {
   }
 }
 
-const Djakstra = (refArray, graph, hashMap, start, target,) => {
+const dijkstra = (refArray, graph, hashMap, start, target,) => {
   let queue = [start];
   const MAX_WIDTH = graph.length;
   const MAX_HEIGHT = graph[0].length;
@@ -35,5 +35,5 @@ const Djakstra = (refArray, graph, hashMap, start, target,) => {
 }
 
 export {
-  Djakstra
+  dijkstra
 }

@@ -58,15 +58,15 @@ const Grid = () => {
       }
     }
     path.reverse().forEach((elem) => {
-      refArray.current[elem.y + elem.x * width].path = true;
+      refArray.current[elem.y + (elem.x * width)].path = true;
     })
   }
 
   const generateMapAndPreviousMap = () => {
     let hashmap = {}
     let prevmap = {}
-    for (let j = 0; j < width; j++) {
-      for (let i = 0; i < height; i++) {
+    for (let j = 0; j < height; j++) {
+      for (let i = 0; i < width; i++) {
         hashmap[`${i}-${j}`] = false
         prevmap[`${i}-${j}`] = null
       }
@@ -77,7 +77,7 @@ const Grid = () => {
   useEffect(() => {
     const { hashmap, prevmap } = generateMapAndPreviousMap();
     if (algo == BFS_ALGORITHM) {
-      let result = bfs(refArray.current, hashmap, prevmap, start.current, end.current)
+      let result = bfs(grid, refArray.current, hashmap, prevmap, start.current, end.current)
       createPath(result, prevmap)
     }
     if (algo == DFS_ALGORITHM) {

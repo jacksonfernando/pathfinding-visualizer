@@ -8,32 +8,13 @@ import {
   useRef
 } from "react";
 import { DEFAULT_HEIGHT, DEFAULT_WIDTH } from "../constants/global";
+import { generateGrid } from "../utils/global";
 
 const context = createContext();
 
 export const useParams = () => {
   return useContext(context)
 };
-
-const generateGrid = (width, height) => {
-  let grid = []
-  for (let i = 0; i < height; i++) {
-    let local = []
-    for (let j = 0; j < width; j++) {
-      local.push({
-        x: i,
-        y: j,
-        isStart: false,
-        isTarget: false,
-        neighbours: []
-      })
-    }
-    grid.push(local)
-  }
-  grid[Math.floor(height / 2)][Math.floor(width / 2)].isStart = true
-  grid[height - 1][width - 1].isTarget = true
-  return grid;
-}
 
 export const ParamsProvider = ({ children }) => {
   const [mode, setMode] = useState(null)

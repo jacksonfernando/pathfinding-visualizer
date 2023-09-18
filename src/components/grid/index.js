@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState, useCallback } from "react";
 import { useParams } from "../../../store/context";
 import { CiFlag1, CiLocationOn } from 'react-icons/ci'
 import gridStyle from './grid.module.css'
@@ -31,6 +31,8 @@ const Grid = () => {
   }
 
   const refArray = useRef([])
+  const [, updateState] = useState();
+  const forceUpdate = useCallback(() => updateState({}), []);
 
   useEffect(() => {
     refArray.current = [];
@@ -86,25 +88,30 @@ const Grid = () => {
     if (algo == DIJKSTRA_ALGORITHM) {
       dijkstra(refArray.current, grid, hashmap, start.current, end.current)
     }
+    forceUpdate()
   }, [run])
+
+  const renderCell = () => {
+    return refArray.current.map((elem, index) => {
+      let xIndex = Math.floor(index / width)
+      let yIndex = index % width
+      let cell = grid[xIndex][yIndex]
+
+      const style = !elem.current ? 'cell' : 'visited'
+      const path = elem.path && 'path'
+
+      return (
+        <div key={`${index}`} className={gridStyle[path || style]} >
+          {cell.isStart ? <CiLocationOn size={20} color="pink" /> : null}
+          {cell.isTarget ? <CiFlag1 size={20} color="green" /> : null}
+        </div>
+      )
+    })
+  }
 
   return (
     <div style={gridContainerStyle}>
-      {refArray.current.map((elem, index) => {
-        let xIndex = Math.floor(index / width)
-        let yIndex = index % width
-        let cell = grid[xIndex][yIndex]
-
-        const style = !elem.current ? 'cell' : 'visited'
-        const path = elem.path && 'path'
-
-        return (
-          <div key={`${index}`} className={gridStyle[path || style]} >
-            {cell.isStart ? <CiLocationOn size={20} color="pink" /> : null}
-            {cell.isTarget ? <CiFlag1 size={20} color="green" /> : null}
-          </div>
-        )
-      })}
+      {renderCell()}
     </div>
   )
 }

@@ -12,10 +12,10 @@ const GridSizeModal = ({ open, setIsModalOpen }) => {
       <div>
         <h2>Grid width and height</h2>
         <br />
-        <label>Width :</label>
+        <label>Width  : </label>
         <input type="text" ref={widthRef} />
         <br /><br />
-        <label>Height :</label>
+        <label>Height : </label>
         <input type="text" ref={heightRef} />
         <br /><br />
         <button type="submit"

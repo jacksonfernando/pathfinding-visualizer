@@ -1,14 +1,14 @@
-import { DEFAULT_HEIGHT, DEFAULT_WIDTH } from "../../constants/global";
-
 const iterateRecursively = (refArray, graph, x, y, hashMap, target) => {
-  if (x < 0 || x >= DEFAULT_HEIGHT || y < 0 || y >= DEFAULT_WIDTH || hashMap[`${x}-${y}`]) {
+  const HEIGHT = graph.length;
+  const WIDTH = graph[0].length;
+  if (x < 0 || x >= HEIGHT || y < 0 || y >= WIDTH || hashMap[`${x}-${y}`]) {
     return null;
   }
   if (graph[x][y].x == target.x && graph[x][y].y == target.y) {
-    refArray[y + (x * DEFAULT_WIDTH)].path = true;
+    refArray[y + (x * WIDTH)].path = true;
     return [{ x, y }]
   }
-  refArray[y + (x * DEFAULT_WIDTH)].path = true;
+  refArray[y + (x * WIDTH)].path = true;
   hashMap[`${x}-${y}`] = true;
   return iterateRecursively(refArray, graph, x + 1, y, hashMap, target) ||
     iterateRecursively(refArray, graph, x - 1, y, hashMap, target) ||

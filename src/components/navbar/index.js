@@ -24,7 +24,10 @@ const Navbar = () => {
             <p onClick={() => setIsModalOpen(true)}>Algorithms</p>
           </li>
           <li>
-            <p onClick={() => setRun(!run)}>Start</p>
+            <p onClick={() => {
+              setRestart(!restart)
+              setRun(!run)
+            }}>Start</p>
           </li>
           <li>
             <p onClick={() => setRestart(!restart)}>Clear Maze</p>

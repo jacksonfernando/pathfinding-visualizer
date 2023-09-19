@@ -31,10 +31,10 @@ const dijkstra = (refArray, graph, hashMap, start, target) => {
     if (currentCell.x == target.x && currentCell.y == target.y) {
       return [currentCell]
     }
+    checkNeighboursAndPushToQueue(queue, graph, currentCell, hashMap, MAX_WIDTH, MAX_HEIGHT)
     if (hashMap[`${currentCell.x}-${currentCell.y}`]) {
       queue.shift();
     }
-    checkNeighboursAndPushToQueue(queue, graph, currentCell, hashMap, MAX_WIDTH, MAX_HEIGHT)
     hashMap[`${currentCell.x}-${currentCell.y}`] = true;
   }
   return null

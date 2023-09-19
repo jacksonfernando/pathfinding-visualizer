@@ -35,9 +35,6 @@ const Navbar = () => {
           <li>
             <p onClick={() => setIsGridModalOpen(true)}>Grid Size</p>
           </li>
-          <li>
-            <p>Starting Position</p>
-          </li>
         </ul>
       </div >
     );

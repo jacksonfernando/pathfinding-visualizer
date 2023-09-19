@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import navbarStyle from './navbar.module.css'
-import { HiMagnifyingGlass, HiOutlineMoon, HiOutlineBars3 } from "react-icons/hi2";
+import { HiOutlineBars3 } from "react-icons/hi2";
 import { latoFont } from '../../../config/fonts'
 import { IoCloseOutline } from "react-icons/io5";
 import { NAVBAR_TITLE } from '../../../constants/global';
@@ -42,8 +42,6 @@ const Navbar = () => {
 
   const renderNavbarIcons = () => {
     const icons = {
-      moonIcon: <HiOutlineMoon size={22} key='moon' />,
-      searchIcon: <HiMagnifyingGlass size={22} key='search' />,
       menuIcon: <HiOutlineBars3
         key='menu'
         size={30}
@@ -69,9 +67,6 @@ const Navbar = () => {
           <h4>{NAVBAR_TITLE}</h4>
           <div className={latoFont.variable}>
             {renderMenu(navbarStyle.menuContainer, navbarStyle.menuList)}
-          </div>
-          <div className={navbarStyle.iconContainer}>
-            {renderNavbarIcons()}
           </div>
           {dropdownMenu && renderMenu(navbarStyle.dropdownMenu, navbarStyle.dropdownMenuList)}
         </div>

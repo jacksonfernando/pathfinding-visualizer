@@ -9,7 +9,7 @@ const generateGrid = (width, height) => {
         isStart: false,
         isTarget: false,
         neighbours: [],
-        distanceToEntrance: 0
+        distanceToEntrance: Infinity
       })
     }
     grid.push(local)

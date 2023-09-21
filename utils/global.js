@@ -19,6 +19,11 @@ const generateGrid = (width, height) => {
   return grid;
 }
 
+const swapItemsInArray = (arr, i, j) => {
+  [arr[i], arr[j]] = [arr[j], arr[i]]
+}
+
 export {
-  generateGrid
+  generateGrid,
+  swapItemsInArray
 }

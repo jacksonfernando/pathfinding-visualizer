@@ -8,7 +8,8 @@ const generateGrid = (width, height) => {
         y: j,
         isStart: false,
         isTarget: false,
-        neighbours: []
+        neighbours: [],
+        distanceToEntrance: 0
       })
     }
     grid.push(local)

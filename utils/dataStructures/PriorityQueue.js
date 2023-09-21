@@ -12,7 +12,7 @@ class PriorityQueue {
     this.#siftUp(this.elements.length - 1)
   }
 
-  pull() {
-
+  peek() {
+    return this.#elements[0];
   }
 }

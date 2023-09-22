@@ -46,6 +46,11 @@ const dijkstra2 = (refArray, graph, hashMap, start, target) => {
   const pq = new PriorityQueue((cellA, cellB) => cellA.distanceToEntrance < cellB.distanceToEntrance)
   pq.insert(start);
   start.distanceToEntrance = 0;
+
+  const visitedCells = new Set();
+  while (pq.size() > 0) {
+    const cell = pq.pull();
+  }
 }
 
 export {

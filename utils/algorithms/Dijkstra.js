@@ -1,3 +1,5 @@
+import PriorityQueue from "../dataStructures/PriorityQueue";
+
 const checkNeighboursAndPushToQueue = (queue, graph, currentCell, hashMap, width, height) => {
   const { x, y } = currentCell;
   if (x + 1 < height && !hashMap[`${x + 1}-${y}`]) {
@@ -41,6 +43,9 @@ const dijkstra = (refArray, graph, hashMap, start, target) => {
 }
 
 const dijkstra2 = (refArray, graph, hashMap, start, target) => {
+  const pq = new PriorityQueue((cellA, cellB) => cellA.distanceToEntrance < cellB.distanceToEntrance)
+  pq.insert(start);
+  start.distanceToEntrance = 0;
 }
 
 export {

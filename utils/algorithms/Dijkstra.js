@@ -40,6 +40,9 @@ const dijkstra = (refArray, graph, hashMap, start, target) => {
   return null
 }
 
+const dijkstra2 = (refArray, graph, hashMap, start, target) => {
+}
+
 export {
   dijkstra
 }

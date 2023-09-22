@@ -23,26 +23,26 @@ const checkNeighboursAndPushToQueue = (queue, graph, currentCell, hashMap, width
   }
 }
 
-const dijkstra = (refArray, graph, hashMap, start, target) => {
-  let queue = [graph[start.x][start.y]];
-  const MAX_HEIGHT = graph.length;
-  const MAX_WIDTH = graph[0].length;
-  while (queue.length > 0) {
-    const currentCell = queue.shift();
-    refArray[currentCell.y + (currentCell.x * MAX_WIDTH)].current = true;
-    if (currentCell.x == target.x && currentCell.y == target.y) {
-      return [currentCell]
-    }
-    checkNeighboursAndPushToQueue(queue, graph, currentCell, hashMap, MAX_WIDTH, MAX_HEIGHT)
-    if (hashMap[`${currentCell.x}-${currentCell.y}`]) {
-      queue.shift();
-    }
-    hashMap[`${currentCell.x}-${currentCell.y}`] = true;
-  }
-  return null
-}
+//const dijkstra = (refArray, graph, hashMap, start, target) => {
+//  let queue = [graph[start.x][start.y]];
+//  const MAX_HEIGHT = graph.length;
+//  const MAX_WIDTH = graph[0].length;
+//  while (queue.length > 0) {
+//    const currentCell = queue.shift();
+//    refArray[currentCell.y + (currentCell.x * MAX_WIDTH)].current = true;
+//    if (currentCell.x == target.x && currentCell.y == target.y) {
+//      return [currentCell]
+//    }
+//    checkNeighboursAndPushToQueue(queue, graph, currentCell, hashMap, MAX_WIDTH, MAX_HEIGHT)
+//    if (hashMap[`${currentCell.x}-${currentCell.y}`]) {
+//      queue.shift();
+//    }
+//    hashMap[`${currentCell.x}-${currentCell.y}`] = true;
+//  }
+//  return null
+//}
 
-const dijkstra2 = (refArray, graph, hashMap, start, target) => {
+const dijkstra = (refArray, graph, hashMap, start, target) => {
   const pq = new PriorityQueue((cellA, cellB) => cellA.distanceToEntrance < cellB.distanceToEntrance)
   pq.insert(start);
   start.distanceToEntrance = 0;
@@ -50,7 +50,11 @@ const dijkstra2 = (refArray, graph, hashMap, start, target) => {
   const visitedCells = new Set();
   while (pq.size() > 0) {
     const cell = pq.pull();
+    visitedCells.add(cell)
+
+    //const connectedNeighbours = cell.
   }
+  return null;
 }
 
 export {

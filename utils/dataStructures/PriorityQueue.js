@@ -1,25 +1,25 @@
 const { swapItemsInArray } = require("../global");
 
 class PriorityQueue {
-  #elements;
-  #compare;
+  _elements;
+  _compare;
 
   constructor(compare) {
-    this.#elements = []
-    this.#compare = compare
+    this._elements = []
+    this._compare = compare
   }
 
   insert(element) {
-    this.#elements.push(element)
-    this.#siftUp(this.elements.length - 1)
+    this._elements.push(element)
+    this._siftUp(this.elements.length - 1)
   }
 
   peek() {
-    return this.#elements[0];
+    return this._elements[0];
   }
 
   size() {
-    return this.#elements.length;
+    return this._elements.length;
   }
 
   static parent(index) {
@@ -34,36 +34,36 @@ class PriorityQueue {
     return index * 2 + 2;
   }
 
-  #siftUp(index) {
+  _siftUp(index) {
     let parentIndex = PriorityQueue.parent(index);
 
     while (
       parentIndex >= 0 &&
-      this.#compare(this.#elements[index], this.#elements[parentIndex])) {
-      swapItemsInArray(this.#elements, parentIndex, index);
+      this._compare(this._elements[index], this._elements[parentIndex])) {
+      swapItemsInArray(this._elements, parentIndex, index);
       index = parentIndex
       parentIndex = PriorityQueue.parent(index)
     }
   }
 
-  #siftDown(index) {
+  _siftDown(index) {
     const leftChildIndex = PriorityQueue.left(index);
     const rightChildIndex = PriorityQueue.right(index);
     let hightestPriorityElementIdx = index;
 
-    if (leftChildIndex < this.#elements.length
-      && this.#compare(this.#elements[leftChildIndex], this.#elements[hightestPriorityElementIdx])) {
+    if (leftChildIndex < this._elements.length
+      && this._compare(this._elements[leftChildIndex], this._elements[hightestPriorityElementIdx])) {
       hightestPriorityElementIdx = leftChildIndex
     }
 
-    if (rightChildIndex < this.#elements.length
-      && this.#compare(this.#elements[rightChildIndex], this.#elements[hightestPriorityElementIdx])) {
+    if (rightChildIndex < this._elements.length
+      && this._compare(this._elements[rightChildIndex], this._elements[hightestPriorityElementIdx])) {
       hightestPriorityElementIdx = rightChildIndex
     }
 
     if (hightestPriorityElementIdx !== index) {
-      swapItemsInArray(this.#elements, hightestPriorityElementIdx, index)
-      this.#siftDown(hightestPriorityElementIdx)
+      swapItemsInArray(this._elements, hightestPriorityElementIdx, index)
+      this._siftDown(hightestPriorityElementIdx)
     }
   }
 }

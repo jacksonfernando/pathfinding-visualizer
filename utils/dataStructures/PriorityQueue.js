@@ -45,6 +45,27 @@ class PriorityQueue {
       parentIndex = PriorityQueue.parent(index)
     }
   }
+
+  #siftDown(index) {
+    const leftChildIndex = PriorityQueue.left(index);
+    const rightChildIndex = PriorityQueue.right(index);
+    let hightestPriorityElementIdx = index;
+
+    if (leftChildIndex < this.#elements.length
+      && this.#compare(this.#elements[leftChildIndex], this.#elements[hightestPriorityElementIdx])) {
+      hightestPriorityElementIdx = leftChildIndex
+    }
+
+    if (rightChildIndex < this.#elements.length
+      && this.#compare(this.#elements[rightChildIndex], this.#elements[hightestPriorityElementIdx])) {
+      hightestPriorityElementIdx = rightChildIndex
+    }
+
+    if (hightestPriorityElementIdx !== index) {
+      swapItemsInArray(this.#elements, hightestPriorityElementIdx, index)
+      this.#siftDown(hightestPriorityElementIdx)
+    }
+  }
 }
 
 export default PriorityQueue

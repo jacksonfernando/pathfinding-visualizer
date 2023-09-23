@@ -23,7 +23,7 @@ const dijkstra = (refArray, graph, hashMap, start, target) => {
   const MAX_WIDTH = graph[0].length;
   const pq = new PriorityQueue((cellA, cellB) => cellA.distanceToEntrance < cellB.distanceToEntrance)
   pq.insert(graph[x][y]);
-  start.distanceToEntrance = 0;
+  graph[x][y].distanceToEntrance = 0;
 
   const visitedCells = new Set();
   while (pq.size() > 0) {
@@ -32,12 +32,11 @@ const dijkstra = (refArray, graph, hashMap, start, target) => {
       return;
     }
     visitedCells.add(cell)
-    refArray[cell.y + (cell.x * MAX_WIDTH)].path = true;
+    refArray[cell.y + (cell.x * MAX_WIDTH)].current = true;
     hashMap[`${cell.x}-${cell.y}`] = true;
 
 
     getConnectedNeighbours(graph, cell, hashMap, MAX_WIDTH, MAX_HEIGHT);
-    console.log('NEIGHBOURS', cell.neighbours);
     for (const neighbor of cell.neighbours) {
       if (visitedCells.has(neighbor)) continue;
 
@@ -45,7 +44,7 @@ const dijkstra = (refArray, graph, hashMap, start, target) => {
       if (newDistanceToEntrance < neighbor.distanceToEntrance) {
         neighbor.parent = cell;
         neighbor.distanceToEntrance = newDistanceToEntrance;
-        if (hashMap(`${neighbor.x}-${neighbor.y}`)) {
+        if (!hashMap[`${neighbor.x}-${neighbor.y}`]) {
           pq.insert(graph[neighbor.x][neighbor.y])
         }
       }

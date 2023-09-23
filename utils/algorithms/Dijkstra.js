@@ -31,7 +31,18 @@ const dijkstra = (refArray, graph, hashMap, start, target) => {
     visitedCells.add(cell)
 
     getConnectedNeighbours(graph, cell, hashMap, MAX_WIDTH, MAX_HEIGHT)
+    for (const neighbor of cell.neighbours) {
+      if (visitedCells.has(neighbor)) continue;
 
+      const newDistanceToEntrance = cell.distanceToEntrance + neighbor.weight;
+      if (newDistanceToEntrance < neighbor.distanceToEntrance) {
+        neighbor.parent = cell;
+        neighbor.distanceToEntrance = newDistanceToEntrance;
+        if (hashMap(`${neighbor.x}-${neighbor.y}`)) {
+          pq.insert(graph[neighbor.x][neighbor.y])
+        }
+      }
+    }
   }
   return null;
 }

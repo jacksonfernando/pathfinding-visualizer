@@ -40,7 +40,7 @@ const dijkstra = (refArray, graph, hashMap, start, target) => {
     for (const neighbor of cell.neighbours) {
       if (neighbor.x == target.x && neighbor.y == target.y) {
         refArray[neighbor.y + (neighbor.x * MAX_WIDTH)].current = true;
-        return [neighbor];
+        return [{ x: neighbor.x, y: neighbor.y }];
       }
       if (visitedCells.has(neighbor)) continue;
 

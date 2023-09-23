@@ -38,6 +38,10 @@ const dijkstra = (refArray, graph, hashMap, start, target) => {
 
     getConnectedNeighbours(graph, cell, hashMap, MAX_WIDTH, MAX_HEIGHT);
     for (const neighbor of cell.neighbours) {
+      if (neighbor.x == target.x && neighbor.y == target.y) {
+        refArray[neighbor.y + (neighbor.x * MAX_WIDTH)].current = true;
+        return [neighbor];
+      }
       if (visitedCells.has(neighbor)) continue;
 
       const newDistanceToEntrance = cell.distanceToEntrance + neighbor.weight;

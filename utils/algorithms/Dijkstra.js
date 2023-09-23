@@ -28,9 +28,16 @@ const dijkstra = (refArray, graph, hashMap, start, target) => {
   const visitedCells = new Set();
   while (pq.size() > 0) {
     const cell = pq.pull();
+    if (cell.x == target.x && cell.y == target.y) {
+      return;
+    }
     visitedCells.add(cell)
+    refArray[cell.y + (cell.x * MAX_WIDTH)].path = true;
+    hashMap[`${cell.x}-${cell.y}`] = true;
 
-    getConnectedNeighbours(graph, cell, hashMap, MAX_WIDTH, MAX_HEIGHT)
+
+    getConnectedNeighbours(graph, cell, hashMap, MAX_WIDTH, MAX_HEIGHT);
+    console.log('NEIGHBOURS', cell.neighbours);
     for (const neighbor of cell.neighbours) {
       if (visitedCells.has(neighbor)) continue;
 

@@ -10,7 +10,8 @@ const generateGrid = (width, height) => {
         isTarget: false,
         neighbours: [],
         distanceToEntrance: Infinity,
-        weight: 1
+        weight: 1,
+        parent: null
       })
     }
     grid.push(local)

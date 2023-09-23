@@ -1,25 +1,76 @@
 const { swapItemsInArray } = require("../global");
 
 class PriorityQueue {
-  _elements;
-  _compare;
+  #elements;
+  #compare;
 
   constructor(compare) {
-    this._elements = []
-    this._compare = compare
+    this.#elements = [];
+    this.#compare = compare;
   }
 
   insert(element) {
-    this._elements.push(element)
-    this._siftUp(this.elements.length - 1)
+    this.#elements.push(element);
+    this.#siftUp(this.#elements.length - 1);
+  }
+
+  pull() {
+    swapItemsInArray(this.#elements, 0, this.#elements.length - 1);
+    const removedElement = this.#elements.pop();
+    this.#siftDown(0);
+    return removedElement;
   }
 
   peek() {
-    return this._elements[0];
+    return this.#elements[0];
   }
 
   size() {
-    return this._elements.length;
+    return this.#elements.length;
+  }
+
+  #siftUp(index) {
+    let parentIndex = PriorityQueue.parent(index);
+
+    while (
+      parentIndex >= 0 &&
+      this.#compare(this.#elements[index], this.#elements[parentIndex])
+    ) {
+      swapItemsInArray(this.#elements, parentIndex, index);
+      index = parentIndex;
+      parentIndex = PriorityQueue.parent(index);
+    }
+  }
+
+  #siftDown(index) {
+    const leftChildIndex = PriorityQueue.left(index);
+    const rightChildIndex = PriorityQueue.right(index);
+    let higherPriorityElementIdx = index;
+
+    if (
+      leftChildIndex < this.#elements.length &&
+      this.#compare(
+        this.#elements[leftChildIndex],
+        this.#elements[higherPriorityElementIdx]
+      )
+    ) {
+      higherPriorityElementIdx = leftChildIndex;
+    }
+
+    if (
+      rightChildIndex < this.#elements.length &&
+      this.#compare(
+        this.#elements[rightChildIndex],
+        this.#elements[higherPriorityElementIdx]
+      )
+    ) {
+      higherPriorityElementIdx = rightChildIndex;
+    }
+
+    if (higherPriorityElementIdx !== index) {
+      swapItemsInArray(this.#elements, higherPriorityElementIdx, index);
+      this.#siftDown(higherPriorityElementIdx);
+    }
   }
 
   static parent(index) {
@@ -33,39 +84,6 @@ class PriorityQueue {
   static right(index) {
     return index * 2 + 2;
   }
-
-  _siftUp(index) {
-    let parentIndex = PriorityQueue.parent(index);
-
-    while (
-      parentIndex >= 0 &&
-      this._compare(this._elements[index], this._elements[parentIndex])) {
-      swapItemsInArray(this._elements, parentIndex, index);
-      index = parentIndex
-      parentIndex = PriorityQueue.parent(index)
-    }
-  }
-
-  _siftDown(index) {
-    const leftChildIndex = PriorityQueue.left(index);
-    const rightChildIndex = PriorityQueue.right(index);
-    let hightestPriorityElementIdx = index;
-
-    if (leftChildIndex < this._elements.length
-      && this._compare(this._elements[leftChildIndex], this._elements[hightestPriorityElementIdx])) {
-      hightestPriorityElementIdx = leftChildIndex
-    }
-
-    if (rightChildIndex < this._elements.length
-      && this._compare(this._elements[rightChildIndex], this._elements[hightestPriorityElementIdx])) {
-      hightestPriorityElementIdx = rightChildIndex
-    }
-
-    if (hightestPriorityElementIdx !== index) {
-      swapItemsInArray(this._elements, hightestPriorityElementIdx, index)
-      this._siftDown(hightestPriorityElementIdx)
-    }
-  }
 }
 
-export default PriorityQueue
+export default PriorityQueue;

@@ -34,9 +34,10 @@ const dijkstra = (refArray, graph, hashMap, prevMap, start, target) => {
     visitedCells.add(cell)
     refArray[cell.y + (cell.x * MAX_WIDTH)].current = true;
     hashMap[`${cell.x}-${cell.y}`] = true;
+    prevMap[`${cell.x}-${cell.y}`] = { x: cell.x, y: cell.y };
 
 
-    getConnectedNeighbours(graph, cell, hashMap, prevMap, MAX_WIDTH, MAX_HEIGHT);
+    getConnectedNeighbours(graph, cell, hashMap, MAX_WIDTH, MAX_HEIGHT);
     for (const neighbor of cell.neighbours) {
       if (neighbor.x == target.x && neighbor.y == target.y) {
         refArray[neighbor.y + (neighbor.x * MAX_WIDTH)].current = true;

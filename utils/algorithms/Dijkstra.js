@@ -44,7 +44,6 @@ const dijkstra = (refArray, graph, hashMap, prevMap, start, target) => {
         return [{ x: neighbor.x, y: neighbor.y }];
       }
       if (visitedCells.has(neighbor)) continue;
-
       const newDistanceToEntrance = cell.distanceToEntrance + neighbor.weight;
       if (newDistanceToEntrance < neighbor.distanceToEntrance) {
         neighbor.parent = cell;

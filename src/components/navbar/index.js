@@ -69,6 +69,9 @@ const Navbar = () => {
             {renderMenu(navbarStyle.menuContainer, navbarStyle.menuList)}
           </div>
           {dropdownMenu && renderMenu(navbarStyle.dropdownMenu, navbarStyle.dropdownMenuList)}
+          <div className={navbarStyle.iconContainer}>
+            {renderNavbarIcons()}
+          </div>
         </div>
         <Algorithmsmodal open={isModalOpen} setIsModalOpen={setIsModalOpen} />
         <GridSizeModal open={isGridModalOpen} setIsModalOpen={setIsGridModalOpen} />

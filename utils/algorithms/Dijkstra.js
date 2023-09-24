@@ -17,7 +17,7 @@ const getConnectedNeighbours = (graph, currentCell, hashMap, width, height) => {
   return currentCell.neighbours
 }
 
-const dijkstra = (refArray, graph, hashMap, start, target) => {
+const dijkstra = (refArray, graph, hashMap, prevMap, start, target) => {
   const { x, y } = start;
   const MAX_HEIGHT = graph.length;
   const MAX_WIDTH = graph[0].length;
@@ -36,7 +36,7 @@ const dijkstra = (refArray, graph, hashMap, start, target) => {
     hashMap[`${cell.x}-${cell.y}`] = true;
 
 
-    getConnectedNeighbours(graph, cell, hashMap, MAX_WIDTH, MAX_HEIGHT);
+    getConnectedNeighbours(graph, cell, hashMap, prevMap, MAX_WIDTH, MAX_HEIGHT);
     for (const neighbor of cell.neighbours) {
       if (neighbor.x == target.x && neighbor.y == target.y) {
         refArray[neighbor.y + (neighbor.x * MAX_WIDTH)].current = true;

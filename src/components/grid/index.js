@@ -79,14 +79,15 @@ const Grid = () => {
   useEffect(() => {
     const { hashmap, prevmap } = generateMapAndPreviousMap();
     if (algo == BFS_ALGORITHM) {
-      let result = bfs(grid, refArray.current, hashmap, prevmap, start.current, end.current)
+      const result = bfs(grid, refArray.current, hashmap, prevmap, start.current, end.current)
       createPath(result, prevmap)
     }
     if (algo == DFS_ALGORITHM) {
       dfs(refArray.current, grid, hashmap, start.current, end.current)
     }
     if (algo == DIJKSTRA_ALGORITHM) {
-      dijkstra(refArray.current, grid, hashmap, start.current, end.current)
+      const result = dijkstra(refArray.current, grid, hashmap, prevmap, start.current, end.current)
+      creatPath(result, prevmap)
     }
     forceUpdate()
   }, [run])

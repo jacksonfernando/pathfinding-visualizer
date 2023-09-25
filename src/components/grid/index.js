@@ -101,8 +101,15 @@ const Grid = () => {
       const style = !elem.current ? 'cell' : 'visited'
       const path = elem.path && 'path'
 
+      console.log(elem.transition)
       return (
-        <div key={`${index}`} className={gridStyle[path || style]} >
+        <div
+          key={`${index}`}
+          className={gridStyle[path || style]}
+          style={{
+            transition: `all ${elem.transition}s ease`
+          }}
+        >
           {cell.isStart ? <CiLocationOn size={20} color="pink" /> : null}
           {cell.isTarget ? <CiFlag1 size={20} color="green" /> : null}
         </div>

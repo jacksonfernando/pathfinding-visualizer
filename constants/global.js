@@ -2,7 +2,7 @@ const NAVBAR_TITLE = 'Pathfinding Visualizer';
 
 const DEFAULT_WIDTH = 40;
 
-const DEFAULT_HEIGHT = 10;
+const DEFAULT_HEIGHT = 20;
 
 const DFS_ALGORITHM = 'DFS';
 

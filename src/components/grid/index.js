@@ -107,7 +107,7 @@ const Grid = () => {
           key={`${index}`}
           className={gridStyle[path || style]}
           style={{
-            transition: `all ${elem.transition}s ease`
+            transition: `background-color ${elem.transition}s ease-in`
           }}
         >
           {cell.isStart ? <CiLocationOn size={20} color="pink" /> : null}

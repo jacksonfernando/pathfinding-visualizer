@@ -1,13 +1,16 @@
 const bfs = (graph, refArray, hashMap, prevMap, start, target) => {
   const HEIGHT = graph.length;
   const WIDTH = graph[0].length;
+  let count = 0;
   let queue = [start]
   hashMap[`${start.x}-${start.y}`] = true
   while (queue.length > 0) {
     let currentCoordinate = queue.pop()
     let xCoordinate = currentCoordinate.x;
     let yCoordinate = currentCoordinate.y;
+
     refArray[yCoordinate + (xCoordinate * WIDTH)].current = true
+    refArray[yCoordinate + (xCoordinate * WIDTH)].transition = count * 1000;
 
     if (xCoordinate == target.x && yCoordinate == target.y) {
       return [currentCoordinate]
@@ -36,6 +39,7 @@ const bfs = (graph, refArray, hashMap, prevMap, start, target) => {
       prevMap[`${xCoordinate}-${yCoordinate - 1}`] = currentCoordinate
       hashMap[`${xCoordinate}-${yCoordinate - 1}`] = true
     }
+    count++;
   }
   return null
 }

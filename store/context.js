@@ -29,7 +29,6 @@ export const ParamsProvider = ({ children }) => {
   const end = useRef({ x: height - 1, y: width - 1 })
 
   useEffect(() => {
-    console.log('TESTING')
     const generatedGrid = generateGrid(width, height)
     setGrid(generatedGrid);
   }, [restart, dimension]);

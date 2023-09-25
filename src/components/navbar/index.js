@@ -14,7 +14,7 @@ const Navbar = () => {
   const [dropdownMenu, setDropdownMenu] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isGridModalOpen, setIsGridModalOpen] = useState(false);
-  const { setRun, run, setRestart, restart } = useParams();
+  const { setRun, run, setRestart, restart, algo } = useParams();
 
   const renderMenu = (containerStyle, listStyle) => {
     return (
@@ -25,8 +25,12 @@ const Navbar = () => {
           </li>
           <li>
             <p onClick={() => {
-              setRestart(!restart)
-              setRun(!run)
+              if (algo) {
+                setRestart(!restart)
+                setRun(!run)
+                return;
+              }
+              alert('Choose algorithm first!!')
             }}>Start</p>
           </li>
           <li>

@@ -3,7 +3,7 @@ import Modal from "."
 import { useParams } from "../../../store/context";
 
 const GridSizeModal = ({ open, setIsModalOpen }) => {
-  const { setDimension } = useParams();
+  const { setDimension, setRestart, restart } = useParams();
   const widthRef = useRef();
   const heightRef = useRef();
 
@@ -19,13 +19,16 @@ const GridSizeModal = ({ open, setIsModalOpen }) => {
         <input type="text" ref={heightRef} />
         <br /><br />
         <button type="submit"
-          onClick={() => setDimension(prev => (
-            {
-              ...prev,
-              width: parseInt(widthRef.current.value),
-              height: parseInt(heightRef.current.value)
-            })
-          )}
+          onClick={() => {
+            setDimension(prev => (
+              {
+                ...prev,
+                width: parseInt(widthRef.current.value),
+                height: parseInt(heightRef.current.value)
+              })
+            )
+            setRestart(!restart)
+          }}
         >
           Submit
         </button>

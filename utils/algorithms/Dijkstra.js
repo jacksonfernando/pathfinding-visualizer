@@ -24,6 +24,7 @@ const dijkstra = (refArray, graph, hashMap, prevMap, start, target) => {
   const pq = new PriorityQueue((cellA, cellB) => cellA.distanceToEntrance < cellB.distanceToEntrance)
   pq.insert(graph[x][y]);
   graph[x][y].distanceToEntrance = 0;
+  let count = 0;
 
   const visitedCells = new Set();
   while (pq.size() > 0) {
@@ -33,6 +34,7 @@ const dijkstra = (refArray, graph, hashMap, prevMap, start, target) => {
     }
     visitedCells.add(cell)
     refArray[cell.y + (cell.x * MAX_WIDTH)].current = true;
+    refArray[cell.y + (cell.x * MAX_WIDTH)].transition = count * 0.001;
     hashMap[`${cell.x}-${cell.y}`] = true;
 
 
@@ -53,6 +55,7 @@ const dijkstra = (refArray, graph, hashMap, prevMap, start, target) => {
         }
       }
     }
+    count++;
   }
   return null;
 }

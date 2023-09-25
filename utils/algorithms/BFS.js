@@ -10,7 +10,7 @@ const bfs = (graph, refArray, hashMap, prevMap, start, target) => {
     let yCoordinate = currentCoordinate.y;
 
     refArray[yCoordinate + (xCoordinate * WIDTH)].current = true
-    refArray[yCoordinate + (xCoordinate * WIDTH)].transition = count * 1000;
+    refArray[yCoordinate + (xCoordinate * WIDTH)].transition = count * 0.01;
 
     if (xCoordinate == target.x && yCoordinate == target.y) {
       return [currentCoordinate]

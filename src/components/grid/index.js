@@ -8,6 +8,7 @@ import { bfs } from "../../../utils/algorithms/BFS";
 import { dfs } from "../../../utils/algorithms/DFS";
 import { BFS_ALGORITHM, DFS_ALGORITHM, DIJKSTRA_ALGORITHM } from "../../../constants/global";
 import { dijkstra } from "../../../utils/algorithms/Dijkstra";
+import { generatePath } from "../../../utils/global";
 
 const Grid = () => {
   const {
@@ -50,21 +51,6 @@ const Grid = () => {
   }, [res])
 
 
-  const createPath = (currentCoordinate, prevMap, transitionTime) => {
-    let newCoordinate = currentCoordinate;
-    const path = [];
-    if (newCoordinate) {
-      while (prevMap[`${newCoordinate.x}-${newCoordinate.y}`]) {
-        path.push(newCoordinate)
-        newCoordinate = prevMap[`${newCoordinate.x}-${newCoordinate.y}`]
-      }
-    }
-    path.reverse().forEach((elem) => {
-      refArray.current[elem.y + (elem.x * width)].path = true;
-      refArray.current[elem.y + (elem.x * width)].transition = transitionTime;
-    })
-  }
-
   const generateMapAndPreviousMap = () => {
     let hashmap = {}
     let prevmap = {}
@@ -80,16 +66,21 @@ const Grid = () => {
   useEffect(() => {
     const { hashmap, prevmap } = generateMapAndPreviousMap();
     if (algo == BFS_ALGORITHM) {
-      const { currentCoordinate, transitionTime } = bfs(grid, refArray.current, hashmap, prevmap, start.current, end.current)
-      createPath(currentCoordinate, prevmap, transitionTime)
+      const {
+        currentCoordinate,
+        transitionTime
+      } = bfs(grid, refArray.current, hashmap, prevmap, start.current, end.current)
+      generatePath(refArray, currentCoordinate, prevmap, transitionTime, width)
     }
     if (algo == DFS_ALGORITHM) {
       dfs(refArray.current, grid, hashmap, start.current, end.current)
     }
     if (algo == DIJKSTRA_ALGORITHM) {
-      const { currentCoordinate, transitionTime } = dijkstra(refArray.current, grid, hashmap, prevmap, start.current, end.current)
-      console.log(currentCoordinate, transitionTime)
-      createPath(currentCoordinate, prevmap, transitionTime)
+      const {
+        currentCoordinate,
+        transitionTime
+      } = dijkstra(refArray.current, grid, hashmap, prevmap, start.current, end.current)
+      generatePath(refArray, currentCoordinate, prevmap, transitionTime, width)
     }
     forceUpdate()
   }, [run])

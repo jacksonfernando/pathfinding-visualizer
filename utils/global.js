@@ -26,7 +26,24 @@ const swapItemsInArray = (arr, i, j) => {
   [arr[i], arr[j]] = [arr[j], arr[i]]
 }
 
+const generatePath = (refArray, currentCoordinate, prevMap, transitionTime, width) => {
+  let newCoordinate = currentCoordinate;
+  const path = [];
+  if (newCoordinate) {
+    while (prevMap[`${newCoordinate.x}-${newCoordinate.y}`]) {
+      path.push(newCoordinate)
+      newCoordinate = prevMap[`${newCoordinate.x}-${newCoordinate.y}`]
+    }
+  }
+  path.reverse().forEach((elem) => {
+    refArray.current[elem.y + (elem.x * width)].path = true;
+    refArray.current[elem.y + (elem.x * width)].transition = transitionTime;
+  })
+}
+
+
 export {
   generateGrid,
-  swapItemsInArray
+  swapItemsInArray,
+  generatePath
 }

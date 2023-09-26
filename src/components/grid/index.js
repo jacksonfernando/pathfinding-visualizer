@@ -51,16 +51,18 @@ const Grid = () => {
 
 
   const createPath = (currentCoordinate, prevMap, transitionTime) => {
+    let newCoordinate = currentCoordinate;
     const path = [];
-    if (currentCoordinate) {
-      const { x, y } = currentCoordinate;
-      while (prevMap[`${x}-${y}`]) {
-        path.push(currentCoordinate)
-        currentCoordinate = prevMap[`${x}-${y}`]
+    if (newCoordinate) {
+      while (prevMap[`${newCoordinate.x}-${newCoordinate.y}`]) {
+        path.push(newCoordinate)
+        newCoordinate = prevMap[`${newCoordinate.x}-${newCoordinate.y}`]
       }
     }
+    console.log(transitionTime)
     path.reverse().forEach((elem) => {
       refArray.current[elem.y + (elem.x * width)].path = true;
+      refArray.current[elem.y + (elem.x * width)].transition = transitionTime;
     })
   }
 

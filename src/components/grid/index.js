@@ -59,7 +59,6 @@ const Grid = () => {
         newCoordinate = prevMap[`${newCoordinate.x}-${newCoordinate.y}`]
       }
     }
-    console.log(transitionTime)
     path.reverse().forEach((elem) => {
       refArray.current[elem.y + (elem.x * width)].path = true;
       refArray.current[elem.y + (elem.x * width)].transition = transitionTime;

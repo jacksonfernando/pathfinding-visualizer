@@ -30,7 +30,7 @@ const dijkstra = (refArray, graph, hashMap, prevMap, start, target) => {
   while (pq.size() > 0) {
     const cell = pq.pull();
     if (cell.x == target.x && cell.y == target.y) {
-      return;
+      return { currentCoordinate: { x: cell.x, y: cell.y }, transitionTime: count * 0.001 };
     }
     visitedCells.add(cell)
     refArray[cell.y + (cell.x * MAX_WIDTH)].current = true;

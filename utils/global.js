@@ -11,7 +11,8 @@ const generateGrid = (width, height) => {
         neighbours: [],
         distanceToEntrance: Infinity,
         weight: 1,
-        parent: null
+        parent: null,
+        isWall: false
       })
     }
     grid.push(local)

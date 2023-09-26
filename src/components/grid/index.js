@@ -50,13 +50,13 @@ const Grid = () => {
   }, [res])
 
 
-  const createPath = (result, prevMap) => {
-    let COORDINATE = result && result[0];
+  const createPath = (currentCoordinate, prevMap, transitionTime) => {
     const path = [];
-    if (COORDINATE) {
-      while (prevMap[`${COORDINATE.x}-${COORDINATE.y}`]) {
-        path.push(COORDINATE)
-        COORDINATE = prevMap[`${COORDINATE.x}-${COORDINATE.y}`]
+    if (currentCoordinate) {
+      const { x, y } = currentCoordinate;
+      while (prevMap[`${x}-${y}`]) {
+        path.push(currentCoordinate)
+        currentCoordinate = prevMap[`${x}-${y}`]
       }
     }
     path.reverse().forEach((elem) => {
@@ -79,15 +79,15 @@ const Grid = () => {
   useEffect(() => {
     const { hashmap, prevmap } = generateMapAndPreviousMap();
     if (algo == BFS_ALGORITHM) {
-      const result = bfs(grid, refArray.current, hashmap, prevmap, start.current, end.current)
-      createPath(result, prevmap)
+      const { currentCoordinate, transitionTime } = bfs(grid, refArray.current, hashmap, prevmap, start.current, end.current)
+      createPath(currentCoordinate, prevmap, transitionTime)
     }
     if (algo == DFS_ALGORITHM) {
       dfs(refArray.current, grid, hashmap, start.current, end.current)
     }
     if (algo == DIJKSTRA_ALGORITHM) {
-      const result = dijkstra(refArray.current, grid, hashmap, prevmap, start.current, end.current)
-      createPath(result, prevmap)
+      const { currentCoordinate, transitionTime } = dijkstra(refArray.current, grid, hashmap, prevmap, start.current, end.current)
+      createPath(result, prevmap, transitionTime)
     }
     forceUpdate()
   }, [run])
@@ -101,7 +101,6 @@ const Grid = () => {
       const style = !elem.current ? 'cell' : 'visited'
       const path = elem.path && 'path'
 
-      console.log(elem.transition)
       return (
         <div
           key={`${index}`}

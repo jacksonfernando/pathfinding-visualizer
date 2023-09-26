@@ -13,7 +13,7 @@ const bfs = (graph, refArray, hashMap, prevMap, start, target) => {
     refArray[yCoordinate + (xCoordinate * WIDTH)].transition = count * 0.001;
 
     if (xCoordinate == target.x && yCoordinate == target.y) {
-      return [currentCoordinate]
+      return { currentCoordinate, transitionTime: count * 0.001 }
     }
 
     if (xCoordinate + 1 < HEIGHT && !hashMap[`${xCoordinate + 1}-${yCoordinate}`]) {

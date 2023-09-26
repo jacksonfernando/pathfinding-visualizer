@@ -43,7 +43,7 @@ const dijkstra = (refArray, graph, hashMap, prevMap, start, target) => {
       prevMap[`${neighbor.x}-${neighbor.y}`] = { x: cell.x, y: cell.y };
       if (neighbor.x == target.x && neighbor.y == target.y) {
         refArray[neighbor.y + (neighbor.x * MAX_WIDTH)].current = true;
-        return [{ x: neighbor.x, y: neighbor.y }];
+        return { currentCoordinate: { x: neighbor.x, y: neighbor.y }, transitionTime: count * 0.001 };
       }
       if (visitedCells.has(neighbor)) continue;
       const newDistanceToEntrance = cell.distanceToEntrance + neighbor.weight;

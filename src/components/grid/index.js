@@ -88,7 +88,8 @@ const Grid = () => {
     }
     if (algo == DIJKSTRA_ALGORITHM) {
       const { currentCoordinate, transitionTime } = dijkstra(refArray.current, grid, hashmap, prevmap, start.current, end.current)
-      createPath(result, prevmap, transitionTime)
+      console.log(currentCoordinate, transitionTime)
+      createPath(currentCoordinate, prevmap, transitionTime)
     }
     forceUpdate()
   }, [run])

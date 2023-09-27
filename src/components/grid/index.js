@@ -25,10 +25,11 @@ const Grid = () => {
 
   const gridContainerStyle = {
     display: 'grid',
+    maxWidth: "100%",
     gridTemplateColumns: `repeat(${width}, 1fr)`,
     flexDirection: 'row',
     flexWrap: 'wrap',
-    padding: '2rem 20rem'
+    padding: '2rem 2rem'
   }
 
   const refArray = useRef([])

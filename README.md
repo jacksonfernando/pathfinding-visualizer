@@ -9,12 +9,12 @@ DFS Algo
 Dijkstra Algo
 ![image](https://github.com/jacksonfernando/pathfinding-visualizer/assets/33139248/e5f41969-f779-4f18-bc87-5f0658b88159)
 
-## Todo 
+## Todo
 - [X] Visualize grid
 - [X] Adding BFS Algo
 - [X] Adding DFS Algo
 - [X] Adding Dijkstra Algo
+- [X] Mobile responseiveness
 - [ ] Adding animation
 - [ ] Dynamic resizing of grid
-
 

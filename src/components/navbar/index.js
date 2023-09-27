@@ -36,9 +36,9 @@ const Navbar = () => {
           <li>
             <p onClick={() => setRestart(!restart)}>Clear Maze</p>
           </li>
-          <li>
+          {/*(<li>
             <p onClick={() => setIsGridModalOpen(true)}>Grid Size</p>
-          </li>
+          </li>*/}
         </ul>
       </div >
     );

@@ -15,6 +15,7 @@ Dijkstra Algo
 - [X] Adding DFS Algo
 - [X] Adding Dijkstra Algo
 - [X] Mobile responseiveness
+- [ ] Unit testing using jest
 - [ ] Adding animation
 - [ ] Dynamic resizing of grid
 

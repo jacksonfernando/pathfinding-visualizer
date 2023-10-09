@@ -2,7 +2,7 @@
 
 import { useRef, useEffect, useState, useCallback } from "react";
 import { useParams } from "../../../store/context";
-import { CiFlag1, CiLocationOn } from 'react-icons/ci'
+import { CiFlag1, CiLocationOn, CiBoxes } from 'react-icons/ci'
 import gridStyle from './grid.module.css'
 import { bfs } from "../../../utils/algorithms/BFS";
 import { dfs } from "../../../utils/algorithms/DFS";
@@ -105,7 +105,7 @@ const Grid = () => {
         >
           {cell.isStart ? <CiLocationOn size={20} color="pink" /> : null}
           {cell.isTarget ? <CiFlag1 size={20} color="green" /> : null}
-          {cell.isWall ? <CiFlag1 size={20} color="green" /> : null}
+          {cell.isWall ? <CiBoxes size={20} color="black" /> : null}
         </div>
       )
     })

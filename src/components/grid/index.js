@@ -105,6 +105,7 @@ const Grid = () => {
         >
           {cell.isStart ? <CiLocationOn size={20} color="pink" /> : null}
           {cell.isTarget ? <CiFlag1 size={20} color="green" /> : null}
+          {cell.isWall ? <CiFlag1 size={20} color="green" /> : null}
         </div>
       )
     })
